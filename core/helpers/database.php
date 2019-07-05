@@ -127,7 +127,7 @@ class Database
                 $message = 'Dato duplicado, no se puede guardar';
                 break;
             case 1146:
-                $message = 'Nombre de tabla desconocido';
+                $message = 'Nombre de la tabla desconocido';
                 break;
             case 1451:
                 $message = 'Registro ocupado, no se puede eliminar';

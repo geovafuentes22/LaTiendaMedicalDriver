@@ -11,12 +11,12 @@ Dashboard::headerTemplate('Administrar productos');
             <label for="search">Buscador</label>
         </div>
         <div class="input-field col s6 m4">
-            <button type="submit" class="btn waves-effect green tooltipped" data-tooltip="Buscar"><i class="material-icons">check_circle</i></button>
+            <button type="submit" class="btn waves-effect brown tooltipped" data-tooltip="Buscar"><i class="material-icons">sync</i></button>
         </div>
     </form>
     <!-- Botón para abrir ventana de nuevo registro -->
     <div class="input-field center-align col s12 m4">
-        <a href="#" onclick="modalCreate()" class="btn waves-effect indigo tooltipped" data-tooltip="Agregar"><i class="material-icons">add_circle</i></a>
+        <a href="#" onclick="modalCreate()" class="btn waves-effect  deep-orange tooltipped" data-tooltip="Agregar"><i class="material-icons">more_vert</i></a>
     </div>
 </div>
 <!-- Tabla para mostrar los registros existentes -->
@@ -25,10 +25,13 @@ Dashboard::headerTemplate('Administrar productos');
         <tr>
             <th>IMAGEN</th>
 			<th>NOMBRE</th>
-			<th>PRECIO (US$)</th>
+			<th>CODIGO</th>
+			<th>(US$) PRECIO </th>
+			<th>CANTIDAD</th>
+			<th>GARANTÍA</th>
 			<th>CATEGORÍA</th>
 			<th>ESTADO</th>
-			<th>ACCIÓN</th>
+			<th>REQUISEXO</th>
         </tr>
     </thead>
     <tbody id="tbody-read">
@@ -37,11 +40,11 @@ Dashboard::headerTemplate('Administrar productos');
 <!-- Ventana para crear un nuevo registro -->
 <div id="modal-create" class="modal">
     <div class="modal-content">
-        <h4 class="center-align">Crear producto</h4>
+        <h4 class="center-align">Nuevo Producto</h4>
         <form method="post" id="form-create" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12 m6">
-                  	<i class="material-icons prefix">note_add</i>
+                  	<i class="material-icons prefix">add</i>
                   	<input id="create_nombre" type="text" name="create_nombre" class="validate" required/>
                   	<label for="create_nombre">Nombre</label>
                 </div>
@@ -102,6 +105,11 @@ Dashboard::headerTemplate('Administrar productos');
                   	<i class="material-icons prefix">note_add</i>
                   	<input id="update_nombre" type="text" name="update_nombre" class="validate" required/>
                   	<label for="update_nombre">Nombre</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  	<i class="material-icons prefix">shopping_cart</i>
+                  	<input id="update_codigo" type="text" name="update_codigo"  class="validate" pattern="[0-6]" maxlength="6"  required/>
+                  	<label for="update_precio">Codigo</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>

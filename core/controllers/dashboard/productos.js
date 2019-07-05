@@ -13,17 +13,20 @@ function fillTable(rows)
     let content = '';
     // Se recorren las filas para armar el cuerpo de la tabla y se utiliza comilla invertida para escapar los caracteres especiales
     rows.forEach(function(row){
-        (row.estado_producto == 1) ? icon = 'visibility' : icon = 'visibility_off';
+        (row.id_estado == 1) ? icon = 'visibility' : icon = 'visibility_off';
         content += `
             <tr>
-                <td><img src="../../resources/img/productos/${row.imagen_producto}" class="materialboxed" height="100"></td>
-                <td>${row.nombre_producto}</td>
-                <td>${row.precio_producto}</td>
-                <td>${row.nombre_categoria}</td>
+            <td><img src="../../resources/img/productos/${row.foto}" class="materialboxed" height="100"></td>
+                <td>${row.nombre}</td>
+                <td>${row.codigo}</td>
+                <td>${row.precio}</td>
+                <td>${row.cantidad}</td>
+                <td>${row.id_garantia}</td>
+                <td>${row.id_categoria}</td>
                 <td><i class="material-icons">${icon}</i></td>
                 <td>
                     <a href="#" onclick="modalUpdate(${row.id_producto})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="confirmDelete('${api}', ${row.id_producto}, '${row.imagen_producto}')" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a href="#" onclick="confirmDelete('${api}', ${row.id_producto}, '${row.foto}')" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;
@@ -154,12 +157,16 @@ function modalUpdate(id)
             if (result.status) {
                 $('#form-update')[0].reset();
                 $('#id_producto').val(result.dataset.id_producto);
-                $('#imagen_producto').val(result.dataset.imagen_producto);
-                $('#update_nombre').val(result.dataset.nombre_producto);
-                $('#update_precio').val(result.dataset.precio_producto);
-                $('#update_descripcion').val(result.dataset.descripcion_producto);
-                (result.dataset.estado_producto == 1) ? $('#update_estado').prop('checked', true) : $('#update_estado').prop('checked', false);
+                $('#update_nombre').val(result.dataset.nombre);
+                $('#update_codigo').val(result.dataset.codigo);
+                $('#update_precio').val(result.dataset.precio);
+                $('#update_cantidad').val(result.dataset.cantidad);
+                $('#update_descripcion').val(result.dataset.descripcion);
+                $('#imagen_producto').val(result.dataset.foto);
+                (result.dataset.id_producto == 1) ? $('#update_estado').prop('checked', true) : $('#update_estado').prop('checked', false);
+               //fillSelect(garantia, 'update_garantia', result.dataset.id_garantia);
                 fillSelect(categorias, 'update_categoria', result.dataset.id_categoria);
+                
                 M.updateTextFields();
                 $('#modal-update').modal('open');
             } else {

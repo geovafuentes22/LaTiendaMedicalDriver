@@ -40,12 +40,14 @@ class Dashboard
 										<li><a href="categorias.php"><i class="material-icons left">apps</i>Categorías</a></li>
 										<li><a href="usuarios.php"><i class="material-icons left">contact_mail</i>Usuarios</a></li>
 										<li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">account_box</i> <b>'.$_SESSION['alias_usuario'].'</b></a></li>
+										<li><a href="#" onclick="signOff()"><i class="material-icons">settings_power</i></a></li>
+
 									</ul>
 									<ul id="dropdown" class="dropdown-content">
 										<li><a href="#" onclick="modalProfile()"><i class="material-icons">assistant</i>Editar perfil</a></li>
 										<li><a href="#modal-password" class="modal-trigger"><i class="material-icons">loop</i>Cambiar clave</a></li>
-										<li><a href="#" onclick="signOff()"><i class="material-icons">settings_power</i>Salir</a></li>
 									</ul>
+
 								</div>
 							</nav>
 						</div>
