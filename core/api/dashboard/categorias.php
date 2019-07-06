@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
 	if (isset($_SESSION['id_usuario'])) {
 		switch ($_GET['action']) {
 			case 'read':
-				if ($result['dataset'] = $categoria->readCategorias()) {
+				if ($result['dataset'] = $categoria->readCategoria()) {
 					$result['status'] = 1;
 				} else {
 					$result['exception'] = 'No hay categorías registradas';
@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
 			case 'search':
 				$_POST = $categoria->validateForm($_POST);
 				if ($_POST['search'] != '') {
-					if ($result['dataset'] = $categoria->searchCategorias($_POST['search'])) {
+					if ($result['dataset'] = $categoria->searchCategoria($_POST['search'])) {
 						$result['status'] = 1;
 						$rows = count($result['dataset']);
 						if ($rows > 1) {
@@ -39,13 +39,12 @@ if (isset($_GET['action'])) {
 			case 'create':
 				$_POST = $categoria->validateForm($_POST);
         		if ($categoria->setNombre($_POST['create_nombre'])) {
-					if ($categoria->setDescripcion($_POST['create_descripcion'])) {
 						if (is_uploaded_file($_FILES['create_archivo']['tmp_name'])) {
-							if ($categoria->setImagen($_FILES['create_archivo'], null)) {
+							if ($categoria->setfoto($_FILES['create_archivo'], null)) {
 								if ($categoria->createCategoria()) {
 									$result['id'] = Database::getLastRowId();
 									$result['status'] = 1;
-									if ($categoria->saveFile($_FILES['create_archivo'], $categoria->getRuta(), $categoria->getImagen())) {
+									if ($categoria->saveFile($_FILES['create_archivo'], $categoria->getRuta(), $categoria->getfoto())) {
 										$result['message'] = 'Categoría creada correctamente';
 									} else {
 										$result['message'] = 'Categoría creada. No se guardó el archivo';
@@ -59,9 +58,6 @@ if (isset($_GET['action'])) {
 						} else {
 							$result['exception'] = 'Seleccione una imagen';
 						}
-					} else {
-						$result['exception'] = 'Descripción incorrecta';
-					}
 				} else {
 					$result['exception'] = 'Nombre incorrecto';
 				}
@@ -82,16 +78,15 @@ if (isset($_GET['action'])) {
 				if ($categoria->setId($_POST['id_categoria'])) {
 					if ($categoria->getCategoria()) {
 		                if ($categoria->setNombre($_POST['update_nombre'])) {
-							if ($categoria->setDescripcion($_POST['update_descripcion'])) {
 								if (is_uploaded_file($_FILES['update_archivo']['tmp_name'])) {
-									if ($categoria->setImagen($_FILES['update_archivo'], $_POST['imagen_categoria'])) {
+									if ($categoria->setfoto($_FILES['update_archivo'], $_POST['ranfla'])) {
 										$archivo = true;
 									} else {
 										$result['exception'] = $categoria->getImageError();
 										$archivo = false;
 									}
 								} else {
-									if (!$categoria->setImagen(null, $_POST['imagen_categoria'])) {
+									if (!$categoria->setfoto(null, $_POST['ranfla'])) {
 										$result['exception'] = $categoria->getImageError();
 									}
 									$archivo = false;
@@ -99,7 +94,7 @@ if (isset($_GET['action'])) {
 								if ($categoria->updateCategoria()) {
 									$result['status'] = 1;
 									if ($archivo) {
-										if ($categoria->saveFile($_FILES['update_archivo'], $categoria->getRuta(), $categoria->getImagen())) {
+										if ($categoria->saveFile($_FILES['update_archivo'], $categoria->getRuta(), $categoria->getfoto())) {
 											$result['message'] = 'Categoría modificada correctamente';
 										} else {
 											$result['message'] = 'Categoría modificada. No se guardó el archivo';
@@ -110,9 +105,6 @@ if (isset($_GET['action'])) {
 								} else {
 									$result['exception'] = 'Operación fallida';
 								}
-							} else {
-								$result['exception'] = 'Descripción incorrecta';
-							}
 						} else {
 							$result['exception'] = 'Nombre incorrecto';
 						}

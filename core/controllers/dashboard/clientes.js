@@ -4,7 +4,7 @@ $(document).ready(function()
 })
 
 // Constante para establecer la ruta y parámetros de comunicación con la API
-const api = '../../core/api/dashboard/categorias.php?action=';
+const api = '../../core/api/dashboard/clientes.php?action=';
 
 // Función para llenar tabla con los datos de los registros
 function fillTable(rows)
@@ -14,12 +14,14 @@ function fillTable(rows)
     rows.forEach(function(row){
         content += `
             <tr>
-                <td>${row.id_categoria}</td>
+                <td>${row.id_cliente}</td>
                 <td>${row.nombre}</td>
-                <td><img src="../../resources/img/categorias/${row.foto}" class="materialboxed" height="100"></td>
+                <td>${row.apellido}</td>
+                <td>${row.Dui}</td>
+                <td>${row.correo}</td>
                 <td>
-                    <a  onclick="modalUpdate(${row.id_categoria})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
-                    <a  onclick="confirmDelete('${api}', ${row.id_categoria}, '${row.foto}')" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a href="#" onclick="modalUpdate(${row.id_cliente})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
+                    <a href="#" onclick="confirmDelete('${api}', ${row.id_cliente})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;
@@ -134,7 +136,6 @@ $('#form-create').submit(function()
 // Función para mostrar formulario con registro a modificar
 function modalUpdate(id)
 {
-    console.log(id);
     $.ajax({
         url: api + 'get',
         type: 'post',
@@ -150,9 +151,12 @@ function modalUpdate(id)
             //Se comprueba si el resultado es satisfactorio para mostrar los valores en el formulario, sino se muestra la excepción
             if (result.status) {
                 $('#form-update')[0].reset();
-                $('#id_categoria').val(result.dataset.id_categoria);
+                $('#id_cliente').val(result.dataset.id_cliente);
                 $('#update_nombre').val(result.dataset.nombre);
-                $('#ranfla').val(result.dataset.foto);
+                $('#update_apellido').val(result.dataset.apellido);
+                $('#update_dui').val(result.dataset.Dui);
+                $('#update_correo').val(result.dataset.correo);
+
                 M.updateTextFields();
                 $('#modal-update').modal('open');
             } else {
@@ -161,7 +165,6 @@ function modalUpdate(id)
         } else {
             console.log(response);
         }
-        
     })
     .fail(function(jqXHR){
         // Se muestran en consola los posibles errores de la solicitud AJAX

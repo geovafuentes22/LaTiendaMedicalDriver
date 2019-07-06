@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2019 a las 02:54:58
+-- Tiempo de generación: 06-07-2019 a las 19:08:50
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -40,18 +40,16 @@ DELIMITER ;
 
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL
+  `nombre` varchar(30) NOT NULL,
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'Sillas'),
-(2, 'bastones'),
-(3, 'accesorios'),
-(4, 'repuestos');
+INSERT INTO `categoria` (`id_categoria`, `nombre`, `foto`) VALUES
+(6, 'Silla de Ruedas', '5d20ce39acfba.jpg');
 
 -- --------------------------------------------------------
 
@@ -339,17 +337,6 @@ CREATE TABLE `factura` (
   `id_garantia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `factura`
---
-
-INSERT INTO `factura` (`id_factura`, `hora`, `fecha`, `id_cliente`, `id_garantia`) VALUES
-(1, '10:00', '2019/01/25', 13, 2),
-(2, '11:11', '2019/01/29', 24, 3),
-(3, '13:15', '2019/01/15', 2, 5),
-(4, '17:29', '2019/01/02', 13, 4),
-(5, '23:22', '2019/01/30', 5, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -359,7 +346,7 @@ INSERT INTO `factura` (`id_factura`, `hora`, `fecha`, `id_cliente`, `id_garantia
 CREATE TABLE `garantia` (
   `id_garantia` int(11) NOT NULL,
   `meses` varchar(30) NOT NULL,
-  `estado` varchar(30) NOT NULL
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -367,12 +354,7 @@ CREATE TABLE `garantia` (
 --
 
 INSERT INTO `garantia` (`id_garantia`, `meses`, `estado`) VALUES
-(1, '3 meses', 'activo'),
-(2, '3 meses', 'caducada'),
-(3, '6 meses', 'activo'),
-(4, '6 meses', 'caducada'),
-(5, '1 año', 'activo'),
-(6, '1 año', 'caducada');
+(1, '3meses', 1);
 
 -- --------------------------------------------------------
 
@@ -511,13 +493,6 @@ CREATE TABLE `producto` (
   `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`id_producto`, `nombre`, `codigo`, `precio`, `cantidad`, `descripcion`, `id_garantia`, `id_categoria`, `id_estado`, `foto`) VALUES
-(1, 'Prueba1', '231945', '150.00', '15', 'Esto es una prueba', 1, 1, 1, 'usuario.png');
-
 -- --------------------------------------------------------
 
 --
@@ -538,7 +513,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombres_usuario`, `apellidos_usuario`, `correo_usuario`, `alias_usuario`, `clave_usuario`) VALUES
-(1, 'Geovany Arturo', 'Pineda Fuentes', 'geo@gola.com', 'geovany', '$2y$10$4fVv/wFF8.y.YMuMqPUjROQuqXeRgfY/DxFLekQOzdjofxG4ej7gq');
+(1, 'Geovany Arturo', 'Pineda Fuentes', 'geofuentes.gf@gmail.com', 'geovany', '$2y$10$4fVv/wFF8.y.YMuMqPUjROQuqXeRgfY/DxFLekQOzdjofxG4ej7gq');
 
 --
 -- Índices para tablas volcadas
@@ -582,7 +557,8 @@ ALTER TABLE `factura`
 -- Indices de la tabla `garantia`
 --
 ALTER TABLE `garantia`
-  ADD PRIMARY KEY (`id_garantia`);
+  ADD PRIMARY KEY (`id_garantia`),
+  ADD KEY `garantia_ibfk_1` (`estado`);
 
 --
 -- Indices de la tabla `pedido`
@@ -596,8 +572,8 @@ ALTER TABLE `pedido`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`),
-  ADD KEY `id_estado` (`id_estado`),
-  ADD KEY `id_categoria` (`id_categoria`),
+  ADD KEY `producto_ibfk_4` (`id_categoria`),
+  ADD KEY `producto_ibfk_1` (`id_estado`),
   ADD KEY `id_garantia` (`id_garantia`);
 
 --
@@ -610,6 +586,16 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `garantia`
+--
+ALTER TABLE `garantia`
+  MODIFY `id_garantia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
@@ -628,15 +614,20 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
-  ADD CONSTRAINT `detalle_pedido_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
-  ADD CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`);
+  ADD CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
   ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_garantia` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `garantia`
+--
+ALTER TABLE `garantia`
+  ADD CONSTRAINT `garantia_ibfk_1` FOREIGN KEY (`estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `pedido`
@@ -648,9 +639,9 @@ ALTER TABLE `pedido`
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`),
-  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`),
-  ADD CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`);
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `producto_ibfk_4` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `producto_ibfk_5` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

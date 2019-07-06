@@ -35,16 +35,17 @@ class Dashboard
 									<a href="main.php" class="brand-logo"><img src="../../resources/img/MedicalDriverLogo.png" height="60"></a>
 									<a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 									<ul class="right hide-on-med-and-down">
-										<li><a href="productos.php"><i class="material-icons left">wc</i>Clientes</a></li>
+										<li><a href="clientes.php"><i class="material-icons left">wc</i>Clientes</a></li>
 										<li><a href="productos.php"><i class="material-icons left">assignment</i>Productos</a></li>
 										<li><a href="categorias.php"><i class="material-icons left">apps</i>Categorías</a></li>
-										<li><a href="usuarios.php"><i class="material-icons left">contact_mail</i>Usuarios</a></li>
+										<li><a href="categorias.php"><i class="material-icons left">apps</i>Garantia</a></li>
 										<li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">account_box</i> <b>'.$_SESSION['alias_usuario'].'</b></a></li>
 										<li><a href="#" onclick="signOff()"><i class="material-icons">settings_power</i></a></li>
 
 									</ul>
 									<ul id="dropdown" class="dropdown-content">
-										<li><a href="#" onclick="modalProfile()"><i class="material-icons">assistant</i>Editar perfil</a></li>
+										<li><a href="usuarios.php"><i class="material-icons left">contact_mail</i>Usuarios</a></li>
+										<li><a href="#" onclick="modalProfile()"><i class="material-icons">whatshot</i>Editar perfil</a></li>
 										<li><a href="#modal-password" class="modal-trigger"><i class="material-icons">loop</i>Cambiar clave</a></li>
 									</ul>
 
@@ -52,16 +53,17 @@ class Dashboard
 							</nav>
 						</div>
 						<ul class="sidenav" id="mobile">
-						<li><a href="productos.php"><i class="material-icons left">wc</i>Clientes</a></li>
+						<li><a href="clientes.php"><i class="material-icons left">wc</i>Clientes</a></li>
 						<li><a href="productos.php"><i class="material-icons left">assignment</i>Productos</a></li>
 						<li><a href="categorias.php"><i class="material-icons left">apps</i>Categorías</a></li>
-						<li><a href="usuarios.php"><i class="material-icons left">contact_mail</i>Usuarios</a></li>
+						<li><a href="categorias.php"><i class="material-icons left">subscriptions</i>Garantia</a></li>
 							<li><a class="dropdown-trigger" href="#" data-target="dropdown-mobile"><i class="material-icons">account_box</i> <b>'.$_SESSION['alias_usuario'].'</b></a></li>
+							<li><a href="#" onclick="signOff()">Salir</a></li>
 						</ul>
 						<ul id="dropdown-mobile" class="dropdown-content">
+							<li><a href="usuarios.php"><i class="material-icons left">contact_mail</i>Usuarios</a></li>
 							<li><a href="#" onclick="modalProfile()">Editar perfil</a></li>
 							<li><a href="#modal-password" class="modal-trigger">Cambiar clave</a></li>
-							<li><a href="#" onclick="signOff()">Salir</a></li>
 						</ul>
 					</header>
 					<main class="container">

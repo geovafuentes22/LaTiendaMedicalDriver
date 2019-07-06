@@ -22,7 +22,7 @@ Dashboard::headerTemplate('Registrar primer usuario');
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">person_pin</i>
             <input id="alias" type="text" name="alias" class="validate" required/>
-            <label for="alias">Alias</label>
+            <label for="Nombre de Usuario">Nombre de Usuario</label>
         </div>
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">security</i>

@@ -1,6 +1,6 @@
 <?php
 require_once('../../core/helpers/dashboard.php');
-Dashboard::headerTemplate('Categorías');
+Dashboard::headerTemplate('Clientes');
 ?>
 <div class="row">
     <!-- Formulario de búsqueda -->
@@ -25,8 +25,10 @@ Dashboard::headerTemplate('Categorías');
         <tr>
             <th>ID</th>
             <th>NOMBRE</th>
-            <th>IMAGEN</th>
-            <th>ACCIÓN</th>
+            <th>APELLIDO</th>
+            <th>DUI</th>
+            <th>CORREO</th>
+            <th>EDICION</th>
         </tr>
     </thead>
     <tbody id="tbody-read">
@@ -35,7 +37,7 @@ Dashboard::headerTemplate('Categorías');
 <!-- Ventana para crear un nuevo registro -->
 <div id="modal-create" class="modal">
     <div class="modal-content">
-        <h4 class="center-align">Crear Nueva Categoria</h4>
+        <h4 class="center-align">Crear nuevo Cliente</h4>
         <form method="post" id="form-create" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12 m6">
@@ -43,14 +45,25 @@ Dashboard::headerTemplate('Categorías');
                     <input id="create_nombre" type="text" name="create_nombre" class="validate" required/>
                     <label for="create_nombre">Nombre</label>
                 </div>
-                <div class="file-field input-field col s12 m6">
-                    <div class="btn waves-effect  brown tooltipped"  data-tooltip="Subir Foto">
-                        <span><i class="material-icons">satellite</i></span>
-                        <input id="create_archivo" type="file" name="create_archivo" required/>
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">note_add</i>
+                    <input id="create_apellido" type="text" name="create_apellido" class="validate" required/>
+                    <label for="create_apellido">Apellido</label>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m3">
+                        <i class="material-icons prefix">note_add</i>
+                        <input id="create_dui" type="number" name="create_dui" class="validate" required/>
+                        <label for="create_dui">Dui</label>
                     </div>
-                    <div class="file-path-wrapper">
-                        <input type="text" class="file-path validate" placeholder="Seleccione una imagen de 500x500"/>
+                    <div class="input-field col s12 m1">
+                        <input id="create_dui2" type="number" name="create_dui2" class="validate" required/>
                     </div>
+                </div>
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">note_add</i>
+                    <input type="email"  id="create_correo" class="validate" required>
+                    <label for="create_correo">Correo</label>
                 </div>
             </div>
             <div class="row center-align">
@@ -79,7 +92,7 @@ Dashboard::headerTemplate('Categorías');
                         <input id="update_archivo" type="file" name="update_archivo"/>
                     </div>
                     <div class="file-path-wrapper">
-                        <input  id ="ranfla" name="ranfla" class="file-path validate" type="text" placeholder="Seleccione una imagen de 500x500"/>
+                        <input class="file-path validate" type="text" placeholder="Seleccione una imagen de 500x500"/>
                     </div>
                 </div>
             </div>
@@ -91,5 +104,5 @@ Dashboard::headerTemplate('Categorías');
     </div>
 </div>
 <?php
-Dashboard::footerTemplate('categorias.js');
+Dashboard::footerTemplate('clientes.js');
 ?>

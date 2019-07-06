@@ -108,13 +108,18 @@ Dashboard::headerTemplate('Administrar productos');
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
-                  	<input id="update_codigo" type="text" name="update_codigo"  class="validate" pattern="[0-6]" maxlength="6"  required/>
+                  	<input id="update_codigo" type="text" name="update_codigo"  class="validate" pattern="[0-6]" name="numero" maxlength="6" required validate/>
                   	<label for="update_precio">Codigo</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
                   	<input id="update_precio" type="number" name="update_precio" class="validate" min="0.01" max="999.99" step="any" required/>
                   	<label for="update_precio">Precio ($)</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  	<i class="material-icons prefix">description</i>
+                  	<input id="update_cantidad" type="number" name="update_cantidad" class="validate"   required/>
+                  	<label for="update_cantidad">Cantidad</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">description</i>
@@ -126,13 +131,18 @@ Dashboard::headerTemplate('Administrar productos');
                     </select>
                     <label>Categoría</label>
                 </div>
+                <div class="input-field col s12 m6">
+                    <select id="update_garantia" name="update_garantia">
+                    </select>
+                    <label>Garantía</label>
+                </div>
               	<div class="file-field input-field col s12 m6">
                     <div class="btn waves-effect">
                         <span><i class="material-icons">image</i></span>
                         <input id="update_archivo" type="file" name="update_archivo"/>
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Seleccione una imagen de 500x500"/>
+                        <input class="file-path validate" type="text" placeholder="Imagen valida 500x500"/>
                     </div>
                 </div>
                 <div class="col s12 m6">

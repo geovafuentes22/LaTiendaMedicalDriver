@@ -3,10 +3,8 @@ class Categorias extends Validator
 {
 	// Declaración de propiedades
 	private $id = null;
-	private $nombre = null;
-	private $imagen = null;
-	private $descripcion = null;
-	private $ruta = '../../../resources/img/categorias/';
+	private $meses = null;
+	private $estado = null;
 
 	// Métodos para sobrecarga de propiedades
 	public function setId($value)
@@ -24,10 +22,10 @@ class Categorias extends Validator
 		return $this->id;
 	}
 
-	public function setNombre($value)
+	public function setMeses($value)
 	{
 		if($this->validateAlphanumeric($value, 1, 50)) {
-			$this->nombre = $value;
+			$this->meses = $value;
 			return true;
 		} else {
 			return false;

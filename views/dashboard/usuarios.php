@@ -11,12 +11,12 @@ Dashboard::headerTemplate('Administrar usuarios');
             <label for="search">Buscador</label>
         </div>
         <div class="input-field col s6 m4">
-            <button type="submit" class="btn waves-effect green tooltipped" data-tooltip="Buscar"><i class="material-icons">check_circle</i></button>
+        <button type="submit" class="btn waves-effect brown tooltipped" data-tooltip="Buscar"><i class="material-icons">sync</i></button>
         </div>
     </form>
     <!-- Botón para abrir ventana de nuevo registro -->
     <div class="input-field center-align col s12 m4">
-        <a href="#" onclick="modalCreate()" class="btn waves-effect indigo tooltipped modal-trigger" data-tooltip="Agregar"><i class="material-icons">add_circle</i></a>
+    <a href="#" onclick="modalCreate()" class="btn waves-effect  deep-orange tooltipped" data-tooltip="Agregar"><i class="material-icons">more_vert</i></a>
     </div>
 </div>
 <!-- Tabla para mostrar los registros existentes -->
@@ -26,7 +26,7 @@ Dashboard::headerTemplate('Administrar usuarios');
             <th>APELLIDOS</th>
             <th>NOMBRES</th>
             <th>CORREO</th>
-            <th>ALIAS</th>
+            <th>USUARIO</th>
             <th>ACCIÓN</th>
         </tr>
     </thead>
@@ -36,7 +36,7 @@ Dashboard::headerTemplate('Administrar usuarios');
 <!-- Ventana para crear un nuevo registro -->
 <div id="modal-create" class="modal">
     <div class="modal-content">
-        <h4 class="center-align">Crear usuario</h4>
+        <h4 class="center-align">Creando el usuario</h4>
         <form method="post" id="form-create">
             <div class="row">
                 <div class="input-field col s12 m6">
@@ -71,8 +71,8 @@ Dashboard::headerTemplate('Administrar usuarios');
                 </div>
             </div>
             <div class="row center-align">
-                <a href="#" class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">cancel</i></a>
-                <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Crear"><i class="material-icons">save</i></button>
+            <a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+                <button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>
             </div>
         </form>
     </div>
@@ -106,8 +106,8 @@ Dashboard::headerTemplate('Administrar usuarios');
                 </div>
             </div>
             <div class="row center-align">
-                <a href="#" class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">cancel</i></a>
-                <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Modificar"><i class="material-icons">save</i></button>
+            <a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+                <button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>  
             </div>
         </form>
     </div>
