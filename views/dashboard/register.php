@@ -1,6 +1,6 @@
 <?php
 require_once('../../core/helpers/dashboard.php');
-Dashboard::headerTemplate('Registrar primer usuario');
+Dashboard::headerTemplate('Registro');
 ?>
 <form method="post" id="form-register">
     <div class="row">

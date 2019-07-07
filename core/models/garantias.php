@@ -1,10 +1,10 @@
 <?php
-class Categorias extends Validator
+class Garantias extends Validator
 {
 	// Declaración de propiedades
 	private $id = null;
 	private $meses = null;
-	private $estado = null;
+	private $idestado = null;
 
 	// Métodos para sobrecarga de propiedades
 	public function setId($value)
@@ -32,70 +32,72 @@ class Categorias extends Validator
 		}
 	}
 
-	public function getNombre()
+	public function getMeses()
 	{
-		return $this->nombre;
+		return $this->meses;
 	}
 
-	public function setfoto($file, $name)
+	public function setidestado($value)
 	{
-		if ($this->validateImageFile($file, $this->ruta, $name, 500, 500)) {
-			$this->foto = $this->getImageName();
+		if ($value == '1' || $value == '0') {
+			$this->idestado = $value;
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public function getfoto()
+	public function getidestado()
 	{
-		return $this->foto;
+		return $this->idestado;
 	}
 
-	public function getRuta()
-	{
-		return $this->ruta;
-	}
 
 	// Metodos para el manejo del SCRUD
-	public function readCategoria()
+	public function listGarantia()
 	{
-		$sql = 'SELECT id_categoria, nombre, foto FROM categoria ';
+	 $sql= 'SELECT garantia.id_garantia,garantia.meses, garantia.estado, estados.id_estado, estados.estado FROM( garantia INNER JOIN estados on estados.id_estado=garantia.estado)';
+	 $params = array(null);
+	 return Database::getRows($sql, $params);
+	}
+	public function readGarantia()
+	{
+		$sql = 'SELECT id_garantia, meses,estado  FROM garantia ';
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 
-	public function searchCategoria($value)
+	public function searchGarantia($value)
 	{
-		$sql = 'SELECT * FROM categoria WHERE nombre LIKE ? OR id_categoria LIKE ? ORDER BY nombre';
+		$sql = 'SELECT * FROM garantia WHERE meses LIKE ? OR id_garantia LIKE ? ORDER BY meses';
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
 
-	public function createCategoria()
+	public function createGarantia()
 	{
-		$sql = 'INSERT INTO categoria(nombre,foto) VALUES(?, ?)';
-		$params = array($this->nombre, $this->foto,);
+		$sql = 'INSERT INTO garantia (meses,estado) VALUES(?, ?)';
+		$params = array($this->meses, $this->idestado,);
 		return Database::executeRow($sql, $params);
 	}
 
-	public function getCategoria()
+	public function getGarantia()
 	{
-		$sql = 'SELECT id_categoria, nombre,foto FROM categoria WHERE id_categoria = ?';
+		$sql = 'SELECT id_garantia, meses,estado FROM garantia WHERE id_garantia = ?';
 		$params = array($this->id);
 		return Database::getRow($sql, $params);
 	}
 
-	public function updateCategoria()
+	public function updateGarantia()
 	{
-		$sql = 'UPDATE categoria SET nombre = ?, foto = ? WHERE id_categoria = ?';
-		$params = array($this->nombre, $this->foto,  $this->id);
+		$sql = 'UPDATE garantia SET meses = ?, estado = ? WHERE id_garantia = ?';
+		$params = array($this->meses, $this->idestado,  $this->id);
 		return Database::executeRow($sql, $params);
 	}
 
-	public function deleteCategoria()
+	public function deleteGarantia()
 	{
-		$sql = 'DELETE FROM categoria WHERE id_categoria = ?';
+		$sql = 'DELETE FROM garantia WHERE id_garantia = ?';
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}

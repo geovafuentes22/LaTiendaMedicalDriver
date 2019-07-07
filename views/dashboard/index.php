@@ -7,12 +7,12 @@ Dashboard::headerTemplate('MedicalDriver');
     <div class="row">
         <form method="post" id="form-sesion">
             <div class="input-field col s12 m6 offset-m3">
-                <i class="material-icons prefix">person_outliner</i>
+                <i class="material-icons prefix">child_care</i>
                 <input id="alias" type="text" name="alias" class="validate" required/>
                 <label for="alias">Usuario</label>
             </div>
             <div class="input-field col s12 m6 offset-m3">
-                <i class="material-icons prefix">verified_user</i>
+                <i class="material-icons prefix">eject</i>
                 <input id="clave" type="password" name="clave" class="validate" required/>
                 <label for="clave">Contraseña</label>
             </div>

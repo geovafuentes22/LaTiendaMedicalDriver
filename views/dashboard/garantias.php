@@ -1,6 +1,6 @@
 <?php
 require_once('../../core/helpers/dashboard.php');
-Dashboard::headerTemplate('Categorías');
+Dashboard::headerTemplate('Garantias');
 ?>
 <div class="row">
     <!-- Formulario de búsqueda -->
@@ -24,8 +24,8 @@ Dashboard::headerTemplate('Categorías');
     <thead>
         <tr>
             <th>ID</th>
-            <th>NOMBRE</th>
-            <th>IMAGEN</th>
+            <th>MESES</th>
+            <th>ESTADO</th>            
             <th>ACCIÓN</th>
         </tr>
     </thead>
@@ -35,22 +35,26 @@ Dashboard::headerTemplate('Categorías');
 <!-- Ventana para crear un nuevo registro -->
 <div id="modal-create" class="modal">
     <div class="modal-content">
-        <h4 class="center-align">Crear Nueva Categoria</h4>
+        <h4 class="center-align">Crear Nueva Garantia</h4>
         <form method="post" id="form-create" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">note_add</i>
-                    <input id="create_nombre" type="text" name="create_nombre" class="validate" required/>
-                    <label for="create_nombre">Nombre</label>
+                    <input id="create_meses" type="text" name="create_meses" class="validate" required/>
+                    <label for="create_meses">Meses</label>
                 </div>
-                <div class="file-field input-field col s12 m6">
-                    <div class="btn waves-effect  brown tooltipped"  data-tooltip="Subir Foto">
-                        <span><i class="material-icons">satellite</i></span>
-                        <input id="create_archivo" type="file" name="create_archivo" required/>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input type="text" class="file-path validate" placeholder="Seleccione una imagen de 500x500"/>
-                    </div>
+                <div class="col s12 m6">
+                    <p>
+                        <div class="switch">
+                            <span>Estado:</span>
+                            <label>
+                                <i class="material-icons">visibility_off</i>
+                                <input id="create_estado" type="checkbox" name="create_estado" checked/>
+                                <span class="lever"></span>
+                                <i class="material-icons">visibility</i>
+                            </label>
+                        </div>
+                    </p>
                 </div>
             </div>
             <div class="row center-align">
@@ -60,27 +64,32 @@ Dashboard::headerTemplate('Categorías');
         </form>
     </div>
 </div>
+
+
 <!-- Ventana para modificar un registro existente -->
 <div id="modal-update" class="modal">
     <div class="modal-content">
-        <h4 class="center-align">Modificar categoría</h4>
+        <h4 class="center-align">Modificar Garantia</h4>
         <form method="post" id="form-update" enctype="multipart/form-data">
-            <input type="hidden" id="id_categoria" name="id_categoria"/>
-            <input type="hidden" id="imagen_categoria" name="imagen_categoria"/>
+            <input type="hidden" id="id_garantia" name="id_garantia"/>
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">subtitles</i>
-                    <input id="update_nombre" type="text" name="update_nombre" class="validate" required/>
-                    <label for="update_nombre">Nombre</label>
+                    <input id="update_meses" type="text" name="update_meses" class="validate" required/>
+                    <label for="update_meses">Meses</label>
                 </div>
-                <div class="file-field input-field col s12 m6">
-                    <div class="btn waves-effect  brown tooltipped"  data-tooltip="Actualizar foto">
-                        <span><i class="material-icons">image</i></span>
-                        <input id="update_archivo" type="file" name="update_archivo"/>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input  id ="ranfla" name="ranfla" class="file-path validate" type="text" placeholder="Seleccione una imagen de 500x500"/>
-                    </div>
+                <div class="col s12 m6">
+                    <p>
+                        <div class="switch">
+                            <span>Estado:</span>
+                            <label>
+                                <i class="material-icons">visibility_off</i>
+                                <input id="update_estado" type="checkbox" name="update_estado" checked/>
+                                <span class="lever"></span>
+                                <i class="material-icons">visibility</i>
+                            </label>
+                        </div>
+                    </p>
                 </div>
             </div>
             <div class="row center-align">
@@ -91,5 +100,5 @@ Dashboard::headerTemplate('Categorías');
     </div>
 </div>
 <?php
-Dashboard::footerTemplate('categorias.js');
+Dashboard::footerTemplate('garantias.js');
 ?>

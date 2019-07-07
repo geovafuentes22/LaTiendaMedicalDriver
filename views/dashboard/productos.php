@@ -63,6 +63,11 @@ Dashboard::headerTemplate('Administrar productos');
                     </select>
                     <label>Categoría</label>
                 </div>
+                <div class="input-field col s12 m6">
+                    <select id="create_garantia" name="create_garantia">
+                    </select>
+                    <label>Garantia</label>
+                </div>
               	<div class="file-field input-field col s12 m6">
                     <div class="btn waves-effect">
                         <span><i class="material-icons">image</i></span>

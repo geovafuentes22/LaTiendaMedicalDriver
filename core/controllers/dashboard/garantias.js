@@ -3,10 +3,8 @@ $(document).ready(function()
     showTable();
 })
 
-// Constantes para establecer las rutas y parámetros de comunicación con la API
-const api = '../../core/api/dashboard/productos.php?action=';
-const categorias = '../../core/api/dashboard/categorias.php?action=read';
-const garantias = '../../core/api/dashboard/garantias.php?action=read';
+// Constante para establecer la ruta y parámetros de comunicación con la API
+const api = '../../core/api/dashboard/garantias.php?action=';
 
 // Función para llenar tabla con los datos de los registros
 function fillTable(rows)
@@ -14,20 +12,14 @@ function fillTable(rows)
     let content = '';
     // Se recorren las filas para armar el cuerpo de la tabla y se utiliza comilla invertida para escapar los caracteres especiales
     rows.forEach(function(row){
-        (row.id_estado == 1) ? icon = 'visibility' : icon = 'visibility_off';
         content += `
             <tr>
-            <td><img src="../../resources/img/productos/${row.foto}" class="materialboxed" height="100"></td>
-                <td>${row.nombre}</td>
-                <td>${row.codigo}</td>
-                <td>${row.precio}</td>
-                <td>${row.cantidad}</td>
                 <td>${row.id_garantia}</td>
-                <td>${row.id_categoria}</td>
-                <td><i class="material-icons">${icon}</i></td>
+                <td>${row.meses}</td>
+                <td>${row.estado}</td>                
                 <td>
-                    <a href="#" onclick="modalUpdate(${row.id_producto})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="confirmDelete('${api}', ${row.id_producto}, '${row.foto}')" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a  onclick="modalUpdate(${row.id_garantia})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
+                    <a  onclick="confirmDelete('${api}', ${row.id_garantia})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;
@@ -100,8 +92,6 @@ $('#form-search').submit(function()
 function modalCreate()
 {
     $('#form-create')[0].reset();
-    fillSelect(categorias, 'create_categoria', null);
-    fillSelect(garantias, 'create_garantia', null);
     $('#modal-create').modal('open');
 }
 
@@ -124,6 +114,7 @@ $('#form-create').submit(function()
             const result = JSON.parse(response);
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
+                $('#form-create')[0].reset();
                 $('#modal-create').modal('close');
                 showTable();
                 sweetAlert(1, result.message, null);
@@ -143,11 +134,12 @@ $('#form-create').submit(function()
 // Función para mostrar formulario con registro a modificar
 function modalUpdate(id)
 {
+    console.log(id);
     $.ajax({
         url: api + 'get',
         type: 'post',
         data:{
-            id_producto: id
+            id_garantia:id
         },
         datatype: 'json'
     })
@@ -155,20 +147,12 @@ function modalUpdate(id)
         // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
         if (isJSONString(response)) {
             const result = JSON.parse(response);
-            // Se comprueba si el resultado es satisfactorio para mostrar los valores en el formulario, sino se muestra la excepción
+            //Se comprueba si el resultado es satisfactorio para mostrar los valores en el formulario, sino se muestra la excepción
             if (result.status) {
                 $('#form-update')[0].reset();
-                $('#id_producto').val(result.dataset.id_producto);
-                $('#update_nombre').val(result.dataset.nombre);
-                $('#update_codigo').val(result.dataset.codigo);
-                $('#update_precio').val(result.dataset.precio);
-                $('#update_cantidad').val(result.dataset.cantidad);
-                $('#update_descripcion').val(result.dataset.descripcion);
-                $('#imagen_producto').val(result.dataset.foto);
-                (result.dataset.id_producto == 1) ? $('#update_estado').prop('checked', true) : $('#update_estado').prop('checked', false);
-               //fillSelect(garantia, 'update_garantia', result.dataset.id_garantia);
-                fillSelect(categorias, 'update_categoria', result.dataset.id_categoria);
-                
+                $('#id_garantia').val(result.dataset.id_garantia);
+                $('#update_meses').val(result.dataset.meses);
+                (result.dataset.estado == 1) ? $('#update_estado').prop('checked', true) : $('#update_estado').prop('checked', false);
                 M.updateTextFields();
                 $('#modal-update').modal('open');
             } else {
@@ -177,6 +161,7 @@ function modalUpdate(id)
         } else {
             console.log(response);
         }
+        
     })
     .fail(function(jqXHR){
         // Se muestran en consola los posibles errores de la solicitud AJAX

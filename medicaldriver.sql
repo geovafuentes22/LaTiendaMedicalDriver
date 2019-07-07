@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2019 a las 19:08:50
+-- Tiempo de generación: 08-07-2019 a las 01:40:43
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -311,7 +311,7 @@ DELIMITER ;
 --
 
 CREATE TABLE `estados` (
-  `id_estado` int(11) NOT NULL,
+  `id_estado` tinyint(1) NOT NULL,
   `estado` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -320,8 +320,8 @@ CREATE TABLE `estados` (
 --
 
 INSERT INTO `estados` (`id_estado`, `estado`) VALUES
-(1, 'Disponible'),
-(2, 'No Disponible');
+(0, 'No Disponible'),
+(1, 'Disponible');
 
 -- --------------------------------------------------------
 
@@ -346,7 +346,7 @@ CREATE TABLE `factura` (
 CREATE TABLE `garantia` (
   `id_garantia` int(11) NOT NULL,
   `meses` varchar(30) NOT NULL,
-  `estado` int(11) NOT NULL
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -354,7 +354,8 @@ CREATE TABLE `garantia` (
 --
 
 INSERT INTO `garantia` (`id_garantia`, `meses`, `estado`) VALUES
-(1, '3meses', 1);
+(21, '4 Meses', 1),
+(54, '6 meses', 1);
 
 -- --------------------------------------------------------
 
@@ -489,7 +490,7 @@ CREATE TABLE `producto` (
   `descripcion` varchar(50) NOT NULL,
   `id_garantia` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
-  `id_estado` int(11) NOT NULL,
+  `id_estado` tinyint(1) NOT NULL,
   `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -558,7 +559,7 @@ ALTER TABLE `factura`
 --
 ALTER TABLE `garantia`
   ADD PRIMARY KEY (`id_garantia`),
-  ADD KEY `garantia_ibfk_1` (`estado`);
+  ADD KEY `estado` (`estado`);
 
 --
 -- Indices de la tabla `pedido`
@@ -573,8 +574,8 @@ ALTER TABLE `pedido`
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `producto_ibfk_4` (`id_categoria`),
-  ADD KEY `producto_ibfk_1` (`id_estado`),
-  ADD KEY `id_garantia` (`id_garantia`);
+  ADD KEY `id_garantia` (`id_garantia`),
+  ADD KEY `id_estado` (`id_estado`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -595,7 +596,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `garantia`
 --
 ALTER TABLE `garantia`
-  MODIFY `id_garantia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_garantia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
@@ -627,7 +628,7 @@ ALTER TABLE `factura`
 -- Filtros para la tabla `garantia`
 --
 ALTER TABLE `garantia`
-  ADD CONSTRAINT `garantia_ibfk_1` FOREIGN KEY (`estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `garantia_ibfk_1` FOREIGN KEY (`estado`) REFERENCES `estados` (`id_estado`);
 
 --
 -- Filtros para la tabla `pedido`
@@ -639,9 +640,9 @@ ALTER TABLE `pedido`
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `producto_ibfk_4` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_5` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `producto_ibfk_5` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `producto_ibfk_6` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
