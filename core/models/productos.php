@@ -217,5 +217,12 @@ class Productos extends Validator
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}
+
+	public function grafico1()
+	{
+		$sql = 'SELECT id_producto, nombre, precio, cantidad FROM producto';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 }
 ?>
