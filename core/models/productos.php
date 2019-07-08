@@ -171,6 +171,11 @@ class Productos extends Validator
 
 	//Metodos para el manejo del SCRUD
 
+	public  function listProducto(){
+		$sql='SELECT p.id_producto,p.nombre, p.codigo , p.descripcion, p.precio, p.cantidad, c.nombre categoria, g.meses,p.id_estado, p.foto FROM producto p INNER JOIN categoria c ON p.id_categoria = c.id_categoria INNER JOIN garantia g ON p.id_garantia = g.id_garantia';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 	public function readProductos()
 	{
 		$sql = 'SELECT id_producto, nombre, codigo, precio, cantidad, descripcion, id_garantia,id_categoria,id_estado,foto FROM producto  ORDER BY nombre';

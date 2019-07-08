@@ -107,7 +107,7 @@ Dashboard::headerTemplate('Usuarios');
             </div>
             <div class="row center-align">
             <a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
-                <button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>  
+                <button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>
             </div>
         </form>
     </div>

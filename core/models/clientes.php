@@ -111,7 +111,7 @@ class Clientes extends Validator
 	public function updateCliente()
 	{
 		$sql = 'UPDATE cliente SET nombre = ?, apellido = ?, Dui = ?, correo = ? WHERE id_cliente = ?';
-		$params = array($this->nombre, $this->apellido,$this->Dui,$this->correo,  $this->id);
+		$params = array($this->nombre, $this->apellido, $this->Dui, $this->correo,  $this->id);
 		return Database::executeRow($sql, $params);
 	}
 

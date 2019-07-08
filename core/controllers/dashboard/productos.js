@@ -22,12 +22,12 @@ function fillTable(rows)
                 <td>${row.codigo}</td>
                 <td>${row.precio}</td>
                 <td>${row.cantidad}</td>
-                <td>${row.id_garantia}</td>
-                <td>${row.id_categoria}</td>
+                <td>${row.meses}</td>
+                <td>${row.categoria}</td>
                 <td><i class="material-icons">${icon}</i></td>
                 <td>
-                    <a href="#" onclick="modalUpdate(${row.id_producto})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="confirmDelete('${api}', ${row.id_producto}, '${row.foto}')" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a href="#" onclick="modalUpdate(${row.id_producto})" class="btn waves-effect brown tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
+                    <a href="#" onclick="confirmDelete('${api}', ${row.id_producto}, '${row.foto}')" class="btn deep-orange tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;

@@ -20,8 +20,8 @@ function fillTable(rows)
                 <td>${row.Dui}</td>
                 <td>${row.correo}</td>
                 <td>
-                    <a href="#" onclick="modalUpdate(${row.id_cliente})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="confirmDelete('${api}', ${row.id_cliente})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a href="#" onclick="modalUpdate(${row.id_cliente})" class="btn waves-effect brown tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
+                    <a href="#" onclick="confirmDelete('${api}', ${row.id_cliente})" class="btn deep-orange tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;
@@ -140,7 +140,7 @@ function modalUpdate(id)
         url: api + 'get',
         type: 'post',
         data:{
-            id_categoria: id
+            id_cliente: id
         },
         datatype: 'json'
     })
@@ -156,7 +156,6 @@ function modalUpdate(id)
                 $('#update_apellido').val(result.dataset.apellido);
                 $('#update_dui').val(result.dataset.Dui);
                 $('#update_correo').val(result.dataset.correo);
-
                 M.updateTextFields();
                 $('#modal-update').modal('open');
             } else {

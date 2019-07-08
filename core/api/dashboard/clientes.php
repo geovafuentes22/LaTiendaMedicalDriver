@@ -12,13 +12,12 @@ if (isset($_GET['action'])) {
 	if (isset($_SESSION['id_usuario'])) {
 		switch ($_GET['action']) {
 			case 'read':
-				if($result['dataset']=$cliente->readClientes()){
-					$result['status']=1;
+				if ($result['dataset'] = $cliente->readClientes()) {
+					$result['status'] = 1;
+				} else {
+					$result['exception'] = 'No hay clientes registrados';
 				}
-				else{
-					$result['exception']='No hay información';
-				}
-			break;
+				break;
 			case 'search':
 				$_POST = $cliente->validateForm($_POST);
 				if ($_POST['search'] != '') {
@@ -37,19 +36,103 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Ingrese un valor para buscar';
 				}
 				break;
-				case 'create':
-				$_POST = $cliente->validateForm($_POST);
-				if($cliente ->setNombre($_POST[	'create_nombre'])){
 
+			case 'create':
+				$_POST = $cliente->validateForm($_POST);
+        		if ($cliente->setNombre($_POST['create_nombre'])) {
+					if ($cliente->setApellido($_POST['create_apellido'])) {
+						if ($cliente->setDui($_POST['create_dui'])) {
+							if ($cliente->setCorreo($_POST['create_correo'])) {
+								if ($cliente->createCliente()) {
+									$result['id'] = Database::getLastRowId();
+									$result['status'] = 1;
+										$result['message'] = 'Cliente creado correctamente';
+								} else {
+									$result['exception'] = 'Operación fallida';
+								}
 				}else {
-					$result['exception']='Nombre Incorrecto mi amor';
+					$result['exception'] = 'Correo Incorrecto';
+				}
+				}else {
+					$result['exception'] = 'Dui Incorrecto';
+				}
+				}else {
+					$result['exception'] = 'Apellidos Incorrectos';
+				}
+				} else {
+					$result['exception'] = 'Nombres Incorrectos';
 				}
 				break;
+			
+			case 'get':
+                if ($cliente->setId($_POST['id_cliente'])) {
+                    if ($result['dataset'] = $cliente->getCliente()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'Cliente inexistente';
+                    }
+                } else {
+                    $result['exception'] = 'Cliente incorrecto';
+                }
+				break;
+				
+				case 'update':
+				$_POST = $cliente->validateForm($_POST);
+				if ($cliente->setId($_POST['id_cliente'])) {
+					if ($cliente->getCliente()) {
+		                if ($cliente->setNombre($_POST['update_nombre'])) {
+							if ($cliente->setApellido($_POST['update_apellido'])) {
+								if ($cliente->setDui($_POST['update_dui'])) {
+									if ($cliente->setCorreo($_POST['update_correo'])) {
+								if ($cliente->updateCliente()) {
+									$result['status'] = 1;
+											$result['message'] = 'Cliente modificada correctamente';
+								} else {
+									$result['exception'] = 'Operación fallida';
+								}
+							}else {
+								$result['exception'] = 'Correo Incorrecto, Revise';
+							}
+						}else {
+							$result['exception'] ='Dui Incorrecto, Revise por favor';
+						}
+						}else {
+							$result['exception'] ='Apellidos Incorrectos';
+						}
+						} else {
+							$result['exception'] = 'Nombre Incorrecto';
+						}
+					} else {
+						$result['exception'] = 'Cliente inexistente';
+					}
+				} else {
+					$result['exception'] = 'Cliente incorrecto';
+				}
+				break;
+
+            case 'delete':
+				if ($cliente->setId($_POST['identifier'])) {
+					if ($cliente->getCliente()) {
+						if ($cliente->deleteCliente()) {
+							$result['status'] = 1;
+								$result['message'] = 'Cliente eliminada correctamente';
+						} else {
+							$result['exception'] = 'Operación fallida';
+						}
+					} else {
+						$result['exception'] = 'Cliente inexistente';
+					}
+				} else {
+					$result['exception'] = 'Cliente incorrecta';
+				}
+            	break;
+			default:
+				exit('Acción no disponible');
 		}
+		print(json_encode($result));
 	} else {
 		exit('Acceso no disponible');
 	}
-	print(json_encode($result));
 } else {
 	exit('Recurso denegado');
 }

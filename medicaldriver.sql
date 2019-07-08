@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2019 a las 01:40:43
+-- Tiempo de generación: 08-07-2019 a las 07:33:08
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -49,7 +49,10 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `foto`) VALUES
-(6, 'Silla de Ruedas', '5d20ce39acfba.jpg');
+(1, 'Silla de Ruedas', '5d22d10a96236.jpg'),
+(2, 'Bastones', '5d22d11be21aa.jpg'),
+(3, 'Accesorios', '5d22d127863ad.jpg'),
+(4, 'Repuestos', '5d22d134cfcfa.jpg');
 
 -- --------------------------------------------------------
 
@@ -70,108 +73,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `Dui`, `correo`) VALUES
-(1, 'Cecilia', 'Henry', '123456789', 'Duis@euelitNulla.net'),
-(2, 'Alexa', 'Walls', '123456789', 'Etiam.vestibulum@erat.edu'),
-(3, 'Olga', 'Kennedy', '123456789', 'dui@montesnasceturridiculus.ed'),
-(4, 'Chester', 'Hernandez', '123456789', 'volutpat.nunc.sit@Quisquefring'),
-(5, 'Rama', 'Salinas', '123456789', 'lectus@ornarelectus.ca'),
-(6, 'Gary', 'Frazier', '123456789', 'et@loremvehiculaet.net'),
-(7, 'Barbara', 'Marquez', '123456789', 'mi@purusDuiselementum.net'),
-(8, 'Hammett', 'Skinner', '123456789', 'neque.vitae.semper@enimEtiamgr'),
-(9, 'Clio', 'Bender', '123456789', 'magna@mitempor.org'),
-(10, 'Britanni', 'Barry', '123456789', 'elementum.purus.accumsan@Aenea'),
-(11, 'Cassidy', 'Hansen', '123456789', 'in.hendrerit.consectetuer@dapi'),
-(12, 'Rebekah', 'Valenzuela', '123456789', 'condimentum.Donec@aliquet.ca'),
-(13, 'Buckminster', 'Paul', '123456789', 'ante@sed.com'),
-(14, 'Nelle', 'Bell', '123456789', 'nisi@lectus.net'),
-(15, 'George', 'Bruce', '123456789', 'nibh.lacinia@massanonante.co.u'),
-(16, 'Willa', 'Lester', '123456789', 'orci.lacus@Suspendissealiquetm'),
-(17, 'Kylynn', 'Dixon', '123456789', 'augue@Duisacarcu.co.uk'),
-(18, 'Seth', 'Valentine', '123456789', 'nulla.In@necimperdietnec.org'),
-(19, 'Orla', 'Barr', '123456789', 'sodales@pharetraNam.co.uk'),
-(20, 'Quinn', 'Clark', '123456789', 'lorem.semper.auctor@dictum.com'),
-(21, 'Abraham', 'Macias', '123456789', 'Praesent@risusaultricies.edu'),
-(22, 'Bradley', 'Navarro', '123456789', 'dui@Namligula.ca'),
-(23, 'Jonah', 'Goff', '123456789', 'Mauris.molestie.pharetra@etmal'),
-(24, 'Colton', 'Trevino', '123456789', 'pellentesque.eget@acipsumPhase'),
-(25, 'Audrey', 'Allison', '123456789', 'sed@Mauris.org'),
-(26, 'Stone', 'Hall', '123456789', 'massa.Integer.vitae@lacus.com'),
-(27, 'Burke', 'Cruz', '123456789', 'ultrices.posuere@vitae.edu'),
-(28, 'Kadeem', 'Bender', '123456789', 'fringilla@Morbisit.org'),
-(29, 'Malachi', 'Ferguson', '123456789', 'fames.ac.turpis@Donecest.org'),
-(30, 'Daquan', 'Welch', '123456789', 'iaculis.quis.pede@semegestas.e'),
-(31, 'Ima', 'Gilmore', '123456789', 'Lorem.ipsum@gravidamaurisut.co'),
-(32, 'Erich', 'Sparks', '123456789', 'Proin.vel@elitfermentum.edu'),
-(33, 'Cara', 'Swanson', '123456789', 'Suspendisse@dui.co.uk'),
-(34, 'Palmer', 'Wiley', '123456789', 'Quisque.nonummy@Nuncmauris.net'),
-(35, 'Lenore', 'Humphrey', '123456789', 'mi@neccursus.org'),
-(36, 'Kiara', 'Oliver', '123456789', 'gravida@molestie.net'),
-(37, 'Kimberly', 'Snow', '123456789', 'a.neque@laoreetposuereenim.edu'),
-(38, 'Tucker', 'Valenzuela', '123456789', 'pretium@magna.co.uk'),
-(39, 'Alika', 'Collins', '123456789', 'Quisque.nonummy@fermentumferme'),
-(40, 'Fay', 'Webb', '123456789', 'facilisis.eget@loremlorem.net'),
-(41, 'Channing', 'Shepard', '123456789', 'tempus.scelerisque@gravidasita'),
-(42, 'Margaret', 'Navarro', '123456789', 'eu@tristiquepellentesquetellus'),
-(43, 'Stacey', 'Mckenzie', '123456789', 'vel.quam.dignissim@mollis.co.u'),
-(44, 'Hilel', 'Hoffman', '123456789', 'ipsum.dolor@Aliquamfringillacu'),
-(45, 'Orla', 'Charles', '123456789', 'congue.In@loremtristiquealique'),
-(46, 'Dennis', 'Patel', '123456789', 'rhoncus.Proin.nisl@tincidunt.n'),
-(47, 'Judith', 'Mcneil', '123456789', 'vitae.aliquam.eros@blanditcong'),
-(48, 'Octavius', 'Parker', '123456789', 'Donec@arcuAliquamultrices.com'),
-(49, 'Quin', 'Holder', '123456789', 'sagittis.placerat@nunc.ca'),
-(50, 'Vera', 'Lowe', '123456789', 'vulputate.lacus@orciinconsequa'),
-(51, 'Boris', 'Howell', '123456789', 'malesuada.fames@ipsumnonarcu.n'),
-(52, 'Alec', 'Long', '123456789', 'odio.Nam.interdum@pretiumaliqu'),
-(53, 'Ariel', 'Dunn', '123456789', 'Maecenas.iaculis.aliquet@ultri'),
-(54, 'Shelley', 'Ratliff', '123456789', 'eget.varius.ultrices@Crasvulpu'),
-(55, 'Dana', 'Luna', '123456789', 'Integer.eu@ametrisus.ca'),
-(56, 'Howard', 'Levine', '123456789', 'sed.pede.Cum@enimdiam.edu'),
-(57, 'Gavin', 'Haney', '123456789', 'pede@imperdiet.ca'),
-(58, 'Drew', 'Woodard', '123456789', 'lacus@necenim.org'),
-(59, 'Logan', 'Franco', '123456789', 'Integer.tincidunt@enimEtiamgra'),
-(60, 'Stephanie', 'Avila', '123456789', 'ut@sapiencursus.com'),
-(61, 'McKenzie', 'Langley', '123456789', 'ridiculus@natoquepenatibus.com'),
-(62, 'Kitra', 'Odom', '123456789', 'laoreet@CrasinterdumNunc.org'),
-(63, 'Alexandra', 'Richard', '123456789', 'odio@sed.edu'),
-(64, 'Yardley', 'Jennings', '123456789', 'blandit@Duisgravida.co.uk'),
-(65, 'Callum', 'Wooten', '123456789', 'Maecenas@facilisisvitae.net'),
-(66, 'Rhiannon', 'Matthews', '123456789', 'rutrum.urna.nec@fringilla.co.u'),
-(67, 'Palmer', 'Abbott', '123456789', 'egestas@Aliquamornare.com'),
-(68, 'Piper', 'Gutierrez', '123456789', 'massa.rutrum@consectetuerrhonc'),
-(69, 'Amal', 'Roberts', '123456789', 'interdum.libero.dui@Nunclectus'),
-(70, 'Cameron', 'Lloyd', '123456789', 'Sed.nec@ultricesDuis.edu'),
-(71, 'Cain', 'Boone', '123456789', 'Donec@miacmattis.net'),
-(72, 'Basil', 'Landry', '123456789', 'risus.Duis.a@eleifend.net'),
-(73, 'Dante', 'Bright', '123456789', 'Pellentesque.ultricies@Incondi'),
-(74, 'Reese', 'Cardenas', '123456789', 'sodales@egestaslaciniaSed.co.u'),
-(75, 'Felix', 'Stark', '123456789', 'elit@duiquis.edu'),
-(76, 'Micah', 'Bullock', '123456789', 'lacus.varius@Donecvitaeerat.ca'),
-(77, 'Chelsea', 'Lamb', '123456789', 'Sed@loremvitae.com'),
-(78, 'Miranda', 'Case', '123456789', 'vitae.mauris.sit@est.co.uk'),
-(79, 'Unity', 'Weber', '123456789', 'erat.eget.tincidunt@Nullatinci'),
-(80, 'Conan', 'Vaughan', '123456789', 'dui.quis@Donecestmauris.edu'),
-(81, 'Kadeem', 'Park', '123456789', 'Curae@commodohendreritDonec.ca'),
-(82, 'Emerald', 'Nguyen', '123456789', 'sed.consequat.auctor@nonvestib'),
-(83, 'Dominique', 'Richards', '123456789', 'auctor.ullamcorper@duiFusce.ne'),
-(84, 'Wanda', 'Guy', '123456789', 'mollis.Integer@orciUtsemper.ed'),
-(85, 'Shaeleigh', 'Neal', '123456789', 'sagittis@dictummagnaUt.co.uk'),
-(86, 'Sybill', 'Powell', '123456789', 'eleifend@facilisiSedneque.ca'),
-(87, 'Plato', 'Alston', '123456789', 'Suspendisse.tristique@blanditN'),
-(88, 'Xavier', 'Graham', '123456789', 'dictum.sapien@nectellusNunc.ed'),
-(89, 'Britanni', 'Butler', '123456789', 'posuere.cubilia.Curae@Integer.'),
-(90, 'Unity', 'Jarvis', '123456789', 'Morbi@enim.net'),
-(91, 'Zorita', 'Martinez', '123456789', 'Ut.tincidunt.vehicula@massaQui'),
-(92, 'Paul', 'Harper', '123456789', 'neque.pellentesque@orciquis.co'),
-(93, 'Clarke', 'Cooke', '123456789', 'nec@loremacrisus.edu'),
-(94, 'Isaiah', 'Delaney', '123456789', 'Donec@Quisque.com'),
-(95, 'Nicole', 'Richmond', '123456789', 'vehicula.aliquet@quispedePraes'),
-(96, 'Caesar', 'Hess', '123456789', 'Lorem.ipsum.dolor@feugiatplace'),
-(97, 'Neville', 'Quinn', '123456789', 'ipsum@enimmi.ca'),
-(98, 'Ginger', 'Romero', '123456789', 'egestas@Maecenasmalesuada.net'),
-(99, 'Margaret', 'Parsons', '123456789', 'eu.nibh@dictummagnaUt.org'),
-(100, 'Felicia', 'Arnold', '123456789', 'rutrum.Fusce@nonlobortis.com'),
-(101, 'Miguel', 'Marmol', '123456789', 'miguel@gmail.com'),
-(102, 'Miguel', 'Marmol', '123456789', 'miguel@gmail.com');
+(1, 'Geovany', 'Fuentes', '060994819', 'geofuentes.gf@gmail.com'),
+(2, 'Joel', 'Novoa', '056498098', 'Joelnovoa23@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -354,8 +257,9 @@ CREATE TABLE `garantia` (
 --
 
 INSERT INTO `garantia` (`id_garantia`, `meses`, `estado`) VALUES
-(21, '4 Meses', 1),
-(54, '6 meses', 1);
+(1, '3 Meses', 1),
+(2, '6 Meses', 1),
+(3, '1 Año', 0);
 
 -- --------------------------------------------------------
 
@@ -368,112 +272,6 @@ CREATE TABLE `pedido` (
   `fecha` date NOT NULL,
   `id_cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `pedido`
---
-
-INSERT INTO `pedido` (`id_pedido`, `fecha`, `id_cliente`) VALUES
-(1, '0000-00-00', 1),
-(2, '0000-00-00', 2),
-(3, '0000-00-00', 3),
-(4, '0000-00-00', 4),
-(5, '0000-00-00', 5),
-(6, '0000-00-00', 6),
-(7, '0000-00-00', 7),
-(8, '0000-00-00', 8),
-(9, '0000-00-00', 9),
-(10, '0000-00-00', 10),
-(11, '0000-00-00', 11),
-(12, '0000-00-00', 12),
-(13, '0000-00-00', 13),
-(14, '0000-00-00', 14),
-(15, '0000-00-00', 15),
-(16, '0000-00-00', 16),
-(17, '0000-00-00', 17),
-(18, '0000-00-00', 18),
-(19, '0000-00-00', 19),
-(20, '0000-00-00', 20),
-(21, '0000-00-00', 21),
-(22, '0000-00-00', 22),
-(23, '0000-00-00', 23),
-(24, '0000-00-00', 24),
-(25, '0000-00-00', 25),
-(26, '0000-00-00', 26),
-(27, '0000-00-00', 27),
-(28, '0000-00-00', 28),
-(29, '0000-00-00', 29),
-(30, '0000-00-00', 30),
-(31, '0000-00-00', 31),
-(32, '0000-00-00', 32),
-(33, '0000-00-00', 33),
-(34, '0000-00-00', 34),
-(35, '0000-00-00', 35),
-(36, '0000-00-00', 36),
-(37, '0000-00-00', 37),
-(38, '0000-00-00', 38),
-(39, '0000-00-00', 39),
-(40, '0000-00-00', 40),
-(41, '0000-00-00', 41),
-(42, '0000-00-00', 42),
-(43, '0000-00-00', 43),
-(44, '0000-00-00', 44),
-(45, '0000-00-00', 45),
-(46, '0000-00-00', 46),
-(47, '0000-00-00', 47),
-(48, '0000-00-00', 48),
-(49, '0000-00-00', 49),
-(50, '0000-00-00', 50),
-(51, '0000-00-00', 51),
-(52, '0000-00-00', 52),
-(53, '0000-00-00', 53),
-(54, '0000-00-00', 54),
-(55, '0000-00-00', 55),
-(56, '0000-00-00', 56),
-(57, '0000-00-00', 57),
-(58, '0000-00-00', 58),
-(59, '0000-00-00', 59),
-(60, '0000-00-00', 60),
-(61, '0000-00-00', 61),
-(62, '0000-00-00', 62),
-(63, '0000-00-00', 63),
-(64, '0000-00-00', 64),
-(65, '0000-00-00', 65),
-(66, '0000-00-00', 66),
-(67, '0000-00-00', 67),
-(68, '0000-00-00', 68),
-(69, '0000-00-00', 69),
-(70, '0000-00-00', 70),
-(71, '0000-00-00', 71),
-(72, '0000-00-00', 72),
-(73, '0000-00-00', 73),
-(74, '0000-00-00', 74),
-(75, '0000-00-00', 75),
-(76, '0000-00-00', 76),
-(77, '0000-00-00', 77),
-(78, '0000-00-00', 78),
-(79, '0000-00-00', 79),
-(80, '0000-00-00', 80),
-(81, '0000-00-00', 81),
-(82, '0000-00-00', 82),
-(83, '0000-00-00', 83),
-(84, '0000-00-00', 84),
-(85, '0000-00-00', 85),
-(86, '0000-00-00', 86),
-(87, '0000-00-00', 87),
-(88, '0000-00-00', 88),
-(89, '0000-00-00', 89),
-(90, '0000-00-00', 90),
-(91, '0000-00-00', 91),
-(92, '0000-00-00', 92),
-(93, '0000-00-00', 93),
-(94, '0000-00-00', 94),
-(95, '0000-00-00', 95),
-(96, '0000-00-00', 96),
-(97, '0000-00-00', 97),
-(98, '0000-00-00', 98),
-(99, '0000-00-00', 99),
-(100, '0000-00-00', 100);
 
 -- --------------------------------------------------------
 
@@ -493,6 +291,14 @@ CREATE TABLE `producto` (
   `id_estado` tinyint(1) NOT NULL,
   `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id_producto`, `nombre`, `codigo`, `precio`, `cantidad`, `descripcion`, `id_garantia`, `id_categoria`, `id_estado`, `foto`) VALUES
+(1, 'Silla de Ruedas', '326546', '120', '12', 'prueba', 2, 6, 1, '5d229e1b5d824.jpg'),
+(2, 'Silla Olimpica', '302154', '150', '25', 'Silla para competencias', 3, 1, 1, '5d22d16ecae15.jpg');
 
 -- --------------------------------------------------------
 
@@ -514,7 +320,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombres_usuario`, `apellidos_usuario`, `correo_usuario`, `alias_usuario`, `clave_usuario`) VALUES
-(1, 'Geovany Arturo', 'Pineda Fuentes', 'geofuentes.gf@gmail.com', 'geovany', '$2y$10$4fVv/wFF8.y.YMuMqPUjROQuqXeRgfY/DxFLekQOzdjofxG4ej7gq');
+(1, 'Geovany Arturo', 'Pineda Fuentes', 'geofuentes.gf@gmail.com', 'geovany', '$2y$10$hGnQGUN.wD1E2kfJ7NkTCeDsVY7vbY1BGcdqQcq21qLqF26JOQTFO');
 
 --
 -- Índices para tablas volcadas
@@ -591,17 +397,22 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `garantia`
 --
 ALTER TABLE `garantia`
-  MODIFY `id_garantia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_garantia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
@@ -621,8 +432,8 @@ ALTER TABLE `detalle_pedido`
 -- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `garantia`
@@ -634,7 +445,7 @@ ALTER TABLE `garantia`
 -- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`);
+  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`

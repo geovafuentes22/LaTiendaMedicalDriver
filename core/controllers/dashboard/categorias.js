@@ -18,8 +18,8 @@ function fillTable(rows)
                 <td>${row.nombre}</td>
                 <td><img src="../../resources/img/categorias/${row.foto}" class="materialboxed" height="100"></td>
                 <td>
-                    <a  onclick="modalUpdate(${row.id_categoria})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
-                    <a  onclick="confirmDelete('${api}', ${row.id_categoria}, '${row.foto}')" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a  onclick="modalUpdate(${row.id_categoria})" class="btn waves-effect brown tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
+                    <a  onclick="confirmDelete('${api}', ${row.id_categoria}, '${row.foto}')" class="btn deep-orange tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;

@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
 	if (isset($_SESSION['id_usuario'])) {
         switch ($_GET['action']) {
             case 'read':
-                if ($result['dataset'] = $producto->readProductos()) {
+                if ($result['dataset'] = $producto->listProducto()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay productos registrados';

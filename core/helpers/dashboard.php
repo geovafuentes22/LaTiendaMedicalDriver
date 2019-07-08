@@ -142,12 +142,12 @@ class Dashboard
 					<form method="post" id="form-profile">
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<i class="material-icons prefix">person</i>
+								<i class="material-icons prefix">pets</i>
 								<input id="profile_nombres" type="text" name="profile_nombres" class="validate" required/>
 								<label for="profile_nombres">Nombres</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<i class="material-icons prefix">person</i>
+								<i class="material-icons prefix">perm_contact_calendar</i>
 								<input id="profile_apellidos" type="text" name="profile_apellidos" class="validate" required/>
 								<label for="profile_apellidos">Apellidos</label>
 							</div>
@@ -157,14 +157,14 @@ class Dashboard
 								<label for="profile_correo">Correo</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<i class="material-icons prefix">person_pin</i>
+								<i class="material-icons prefix">sentiment_satisfied</i>
 								<input id="profile_alias" type="text" name="profile_alias" class="validate" required/>
 								<label for="profile_alias">Alias</label>
 							</div>
 						</div>
 						<div class="row center-align">
-							<a href="#" class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">cancel</i></a>
-							<button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Guardar"><i class="material-icons">save</i></button>
+						<a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+						<button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Guardar"><i class="material-icons">swap_vert</i></button>
 						</div>
 					</form>
 				</div>
@@ -179,12 +179,12 @@ class Dashboard
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<i class="material-icons prefix">security</i>
+								<i class="material-icons prefix">sd_storage</i>
 								<input id="clave_actual_1" type="password" name="clave_actual_1" class="validate" required/>
 								<label for="clave_actual_1">Clave</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<i class="material-icons prefix">security</i>
+								<i class="material-icons prefix">sd_storage</i>
 								<input id="clave_actual_2" type="password" name="clave_actual_2" class="validate" required/>
 								<label for="clave_actual_2">Confirmar clave</label>
 							</div>
@@ -194,19 +194,19 @@ class Dashboard
 						</div>
 						<div class="row">
 							<div class="input-field col s12 m6">
-								<i class="material-icons prefix">security</i>
+								<i class="material-icons prefix">sentiment_very_satisfied</i>
 								<input id="clave_nueva_1" type="password" name="clave_nueva_1" class="validate" required/>
 								<label for="clave_nueva_1">Clave</label>
 							</div>
 							<div class="input-field col s12 m6">
-								<i class="material-icons prefix">security</i>
+								<i class="material-icons prefix">sentiment_very_satisfied</i>
 								<input id="clave_nueva_2" type="password" name="clave_nueva_2" class="validate" required/>
 								<label for="clave_nueva_2">Confirmar clave</label>
 							</div>
 						</div>
 						<div class="row center-align">
-							<a href="#" class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">cancel</i></a>
-							<button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Cambiar"><i class="material-icons">save</i></button>
+						<a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+						<button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>
 						</div>
 					</form>
 				</div>

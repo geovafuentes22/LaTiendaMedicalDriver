@@ -19,8 +19,8 @@ function fillTable(rows)
                 <td>${row.correo_usuario}</td>
                 <td>${row.alias_usuario}</td>
                 <td>
-                    <a href="#" onclick="modalUpdate(${row.id_usuario})" class="blue-text tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="confirmDelete('${api}', ${row.id_usuario}, null)" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a href="#" onclick="modalUpdate(${row.id_usuario})" class="btn waves-effect brown tooltipped" data-tooltip="Modificar"><i class="material-icons">mode_edit</i></a>
+                    <a href="#" onclick="confirmDelete('${api}', ${row.id_usuario}, null)" class="btn deep-orange tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         `;
