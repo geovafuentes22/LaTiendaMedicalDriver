@@ -170,12 +170,6 @@ class Productos extends Validator
 	}
 
 	//Metodos para el manejo del SCRUD
-	public function readProductosCategoria()
-	{
-		$sql = 'SELECT nombre_categoria, id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto FROM productos INNER JOIN categorias USING(id_categoria) WHERE id_categoria = ? AND estado_producto = 1 ORDER BY nombre_producto';
-		$params = array($this->categoria);
-		return Database::getRows($sql, $params);
-	}
 
 	public function readProductos()
 	{
@@ -207,7 +201,7 @@ class Productos extends Validator
 
 	public function updateProducto()
 	{
-		$sql = 'UPDATE productos SET nombre = ?, codigo = ?, precio = ?, cantidad = ?, descripcion = ?, id_garantia = ?, id_categoria = ?, id_estado = ?,foto = ? WHERE id_producto = ?';
+		$sql = 'UPDATE producto SET nombre = ?, codigo = ?, precio = ?, cantidad = ?, descripcion = ?, id_garantia = ?, id_categoria = ?, id_estado = ?,foto = ? WHERE id_producto = ?';
 		$params = array($this->nombre, $this->codigo, $this->precio, $this->cantidad, $this->descripcion, $this->idgarantia, $this->idcategoria, $this->idestado, $this->foto, $this->id);
 		return Database::executeRow($sql, $params);
 	}

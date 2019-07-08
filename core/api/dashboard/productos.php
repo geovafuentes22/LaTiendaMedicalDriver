@@ -43,9 +43,9 @@ if (isset($_GET['action'])) {
                         if ($producto->setPrecio($_POST['create_precio'])) {
                             if ($producto->setCantidad($_POST['create_cantidad'])) {
                                  if ($producto->setDescripcion($_POST['create_descripcion'])) {
-                                     if (isset($_POST['create_garantia'])) {
-                                        if (isset($_POST['create_Categoria'])) {
-                                            if ($producto->setEstado(isset($_POST['create_estado']) ? 1 : 0)) {
+                                     if ($producto->setidgarantia($_POST['create_garantia'])) {
+                                        if ($producto->setidcategoria($_POST['create_categoria'])) {
+                                            if ($producto->setidestado(isset($_POST['create_estado']) ? 1 : 0)) {
                                                 if (is_uploaded_file($_FILES['create_archivo']['tmp_name'])) {
                                                     if ($producto->setfoto($_FILES['create_archivo'], null)) {
                                                         if ($producto->createProducto()) {
@@ -68,7 +68,7 @@ if (isset($_GET['action'])) {
                                         $result['exception'] = 'Estado incorrecto';
                                     }
                                 }else{
-                                    $result['exception'] = 'Categoria incorrecta';
+                                    $result['exception'] = 'Categoria incorrecta sexooooo';
                                 }
                             }else{                             
                                         $result['exception'] = 'Garantía incorrecta';
@@ -107,11 +107,11 @@ if (isset($_GET['action'])) {
                         if ($producto->setNombre($_POST['update_nombre'])) {
                             if($producto->setCodigo($_POST['update_codigo'])){
                                 if ($producto->setPrecio($_POST['update_precio'])) {
-                                    if ($producto->setCantidad($_POST['create_cantidad'])) {
+                                    if ($producto->setCantidad($_POST['update_cantidad'])) {
                                         if ($producto->setDescripcion($_POST['update_descripcion'])) {
-                                            if ($producto->setGarantia($_POST['update_garantia'])) {
-                                                if ($producto->setCategoria($_POST['update_categoria'])) {
-                                                    if ($producto->setEstado(isset($_POST['update_estado']) ? 1 : 0)) {
+                                            if ($producto->setidgarantia($_POST['update_garantia'])) {
+                                                if ($producto->setidcategoria($_POST['update_categoria'])) {
+                                                    if ($producto->setidestado(isset($_POST['update_estado']) ? 1 : 0)) {
                                                         if (is_uploaded_file($_FILES['update_archivo']['tmp_name'])) {
                                                             if ($producto->setfoto($_FILES['update_archivo'], $_POST['imagen_producto'])) {
                                                             $archivo = true;

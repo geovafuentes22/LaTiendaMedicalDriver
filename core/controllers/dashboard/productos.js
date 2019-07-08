@@ -165,8 +165,8 @@ function modalUpdate(id)
                 $('#update_cantidad').val(result.dataset.cantidad);
                 $('#update_descripcion').val(result.dataset.descripcion);
                 $('#imagen_producto').val(result.dataset.foto);
-                (result.dataset.id_producto == 1) ? $('#update_estado').prop('checked', true) : $('#update_estado').prop('checked', false);
-               //fillSelect(garantia, 'update_garantia', result.dataset.id_garantia);
+                (result.dataset.id_estado == 1) ? $('#update_estado').prop('checked', true) : $('#update_estado').prop('checked', false);
+                fillSelect(garantias, 'update_garantia', result.dataset.id_garantia);
                 fillSelect(categorias, 'update_categoria', result.dataset.id_categoria);
                 
                 M.updateTextFields();

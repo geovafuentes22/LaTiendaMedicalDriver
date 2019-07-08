@@ -1,6 +1,6 @@
 <?php
 require_once('../../core/helpers/dashboard.php');
-Dashboard::headerTemplate('Administrar productos');
+Dashboard::headerTemplate('Productos');
 ?>
 <div class="row">
     <!-- Formulario de búsqueda -->
@@ -31,27 +31,37 @@ Dashboard::headerTemplate('Administrar productos');
 			<th>GARANTÍA</th>
 			<th>CATEGORÍA</th>
 			<th>ESTADO</th>
-			<th>REQUISEXO</th>
+			<th>ACCIONES</th>
         </tr>
     </thead>
     <tbody id="tbody-read">
     </tbody>
 </table>
-<!-- Ventana para crear un nuevo registro -->
+<!-- Ventana para crear un nuevo Producto -->
 <div id="modal-create" class="modal">
     <div class="modal-content">
         <h4 class="center-align">Nuevo Producto</h4>
         <form method="post" id="form-create" enctype="multipart/form-data">
             <div class="row">
-                <div class="input-field col s12 m6">
-                  	<i class="material-icons prefix">add</i>
+            <div class="input-field col s12 m6">
+                  	<i class="material-icons prefix">note_add</i>
                   	<input id="create_nombre" type="text" name="create_nombre" class="validate" required/>
                   	<label for="create_nombre">Nombre</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
-                  	<input id="create_precio" type="number" name="create_precio" class="validate" max="999.99" min="0.01" step="any" required/>
+                  	<input id="create_codigo" type="text" name="create_codigo"  class="validate"  maxlength="6" required />
+                  	<label for="create_codigo">Codigo</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  	<i class="material-icons prefix">shopping_cart</i>
+                  	<input id="create_precio" type="number" name="create_precio" class="validate" min="0.01" max="999.99" step="any" required/>
                   	<label for="create_precio">Precio ($)</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  	<i class="material-icons prefix">description</i>
+                  	<input id="create_cantidad" type="number" name="create_cantidad" class="validate"   required/>
+                  	<label for="create_cantidad">Cantidad</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">description</i>
@@ -66,15 +76,15 @@ Dashboard::headerTemplate('Administrar productos');
                 <div class="input-field col s12 m6">
                     <select id="create_garantia" name="create_garantia">
                     </select>
-                    <label>Garantia</label>
+                    <label>Garantía</label>
                 </div>
               	<div class="file-field input-field col s12 m6">
                     <div class="btn waves-effect">
                         <span><i class="material-icons">image</i></span>
-                        <input id="create_archivo" type="file" name="create_archivo" required/>
+                        <input id="create_archivo" type="file" name="create_archivo"/>
                     </div>
                     <div class="file-path-wrapper">
-                        <input type="text" class="file-path validate" placeholder="Seleccione una imagen de 500x500"/>
+                        <input class="file-path validate" type="text" placeholder="Imagen valida 500x500"/>
                     </div>
                 </div>
                 <div class="col s12 m6">
@@ -83,13 +93,14 @@ Dashboard::headerTemplate('Administrar productos');
                             <span>Estado:</span>
                             <label>
                                 <i class="material-icons">visibility_off</i>
-                                <input id="create_estado" type="checkbox" name="create_estado" checked/>
+                                <input id="create_estado" type="checkbox" name="create_estado"/>
                                 <span class="lever"></span>
                                 <i class="material-icons">visibility</i>
                             </label>
                         </div>
                     </p>
                 </div>
+            </div>
             </div>
             <div class="row center-align">
                 <a href="#" class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">cancel</i></a>
@@ -113,7 +124,7 @@ Dashboard::headerTemplate('Administrar productos');
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
-                  	<input id="update_codigo" type="text" name="update_codigo"  class="validate" pattern="[0-6]" name="numero" maxlength="6" required validate/>
+                  	<input id="update_codigo" type="text" name="update_codigo"  class="validate"  maxlength="6" required validate/>
                   	<label for="update_precio">Codigo</label>
                 </div>
                 <div class="input-field col s12 m6">

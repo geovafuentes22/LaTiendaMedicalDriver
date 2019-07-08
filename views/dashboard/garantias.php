@@ -24,7 +24,7 @@ Dashboard::headerTemplate('Garantias');
     <thead>
         <tr>
             <th>ID</th>
-            <th>MESES</th>
+            <th>MESES/AÑO</th>
             <th>ESTADO</th>            
             <th>ACCIÓN</th>
         </tr>
@@ -41,7 +41,7 @@ Dashboard::headerTemplate('Garantias');
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">note_add</i>
                     <input id="create_meses" type="text" name="create_meses" class="validate" required/>
-                    <label for="create_meses">Meses</label>
+                    <label for="create_meses">Meses/Años</label>
                 </div>
                 <div class="col s12 m6">
                     <p>
