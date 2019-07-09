@@ -220,9 +220,41 @@ class Productos extends Validator
 
 	public function grafico1()
 	{
-		$sql = 'SELECT id_producto, nombre, precio, cantidad FROM producto';
+		$sql = 'SELECT COUNT(p.id_producto) AS IdProducto, c.nombre 
+		FROM producto p 
+		INNER JOIN categoria c USING(id_categoria) 
+		GROUP BY nombre';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+
+	public function grafico2()
+	{
+		$sql = 'SELECT COUNT(p.id_producto) AS IdProducto, g.meses 
+		FROM producto p 
+		INNER JOIN garantia g USING(id_garantia) 
+		GROUP BY meses';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+
+	public function grafico3()
+	{
+		$sql = 'SELECT id_garantia, garantia FROM garantia';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
+
+	public function graficoEstado()
+	{
+		$sql = 'SELECT COUNT(p.id_producto) AS IdProducto, e.estado 
+		FROM producto p 
+		INNER JOIN estados e USING(id_estado) 
+		GROUP BY estado';
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 }
+
+
 ?>
