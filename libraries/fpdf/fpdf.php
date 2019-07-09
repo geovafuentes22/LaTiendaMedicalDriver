@@ -280,7 +280,7 @@ function Close()
 		$this->AddPage();
 	// Page footer
 	$this->InFooter = true;
-	$this->Pooter();
+	$this->Footer();
 	$this->InFooter = false;
 	// Close page
 	$this->_endpage();
@@ -305,7 +305,7 @@ function AddPage($orientation='', $size='', $rotation=0)
 	{
 		// Page footer
 		$this->InFooter = true;
-		$this->Pooter();
+		$this->Footer();
 		$this->InFooter = false;
 		// Close page
 		$this->_endpage();
@@ -331,7 +331,7 @@ function AddPage($orientation='', $size='', $rotation=0)
 	$this->ColorFlag = $cf;
 	// Page header
 	$this->InHeader = true;
-	$this->Encabezado();
+	$this->Header();
 	$this->InHeader = false;
 	// Restore line width
 	if($this->LineWidth!=$lw)
@@ -357,12 +357,12 @@ function AddPage($orientation='', $size='', $rotation=0)
 	$this->ColorFlag = $cf;
 }
 
-function Encabezado()
+function Header()
 {
 	// To be implemented in your own inherited class
 }
 
-function Pooter()
+function Footer()
 {
 	// To be implemented in your own inherited class
 }

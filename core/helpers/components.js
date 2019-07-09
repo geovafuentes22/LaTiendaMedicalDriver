@@ -70,13 +70,13 @@ function fillSelect(api, id, selected)
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
                 let content = '';
-                if (!selected) {
+                
                     content += '<option value="" disabled selected>Seleccione una opción</option>';
-                }
+                
                 result.dataset.forEach(function(row){
                     value = Object.values(row)[0];
                     text = Object.values(row)[1];
-                    if (row.id_categoria != selected) {
+                    if (value != selected) {
                         content += `<option value="${value}">${text}</option>`;
                     } else {
                         content += `<option value="${value}" selected>${text}</option>`;

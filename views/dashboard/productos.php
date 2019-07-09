@@ -17,7 +17,7 @@ Dashboard::headerTemplate('Productos');
     <!-- Botón para abrir ventana de nuevo registro -->
     <div class="input-field center-align col s12 m4">
         <a href="#" onclick="modalCreate()" class="btn waves-effect  deep-orange tooltipped" data-tooltip="Agregar"><i class="material-icons">more_vert</i></a>
-        <a href='../../libraries/reportes/index.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Producto'><i class='material-icons'>assignment</i></a>
+        <a href='../../libraries/reportes/reporteproducto.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Producto'><i class='material-icons'>assignment</i></a>
     </div>
 
 </div>
@@ -71,12 +71,15 @@ Dashboard::headerTemplate('Productos');
                   	<label for="create_descripcion">Descripción</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <select id="create_categoria" name="create_categoria">
+                <select id="create_categoria" name="create_categoria">
+
                     </select>
                     <label>Categoría</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <select id="create_garantia" name="create_garantia">
+                <select id="create_garantia" name="create_garantia">
+
+                    <option value="Huevo sudado">Me pica el culo</option>
                     </select>
                     <label>Garantía</label>
                 </div>

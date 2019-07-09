@@ -185,7 +185,7 @@ class Productos extends Validator
 
 	public function searchProductos($value)
 	{
-		$sql = 'SELECT id_producto, nombre,  codigo, precio, cantidad, descripcion, id_garantia,id_categoria,foto FROM producto INNER JOIN categorias USING(id_categoria) WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ? ORDER BY nombre_producto';
+		$sql = 'SELECT id_producto, producto.nombre, codigo, precio, cantidad, descripcion, id_garantia, id_categoria, producto.foto FROM producto INNER JOIN categoria USING(id_categoria) WHERE producto.nombre LIKE ? OR descripcion LIKE ? ORDER BY producto.nombre';
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
