@@ -110,7 +110,15 @@ if (isset($_GET['action'])) {
 				} else {
 					$result['exception'] = 'Garantía incorrecta';
 				}
-            	break;
+				break;
+
+				case 'garantiaP':
+                if($result['dataset'] = $garantia->grafico3()){
+                    $result['status'] = 1;
+                }else{
+                    $result['exception'] = 'No se encontraron datos';
+                }
+            break;
 			default:
 				exit('Acción no disponible');
 		}

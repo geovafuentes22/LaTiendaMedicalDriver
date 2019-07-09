@@ -101,5 +101,12 @@ class Garantias extends Validator
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
 	}
+
+	public function grafico3()
+	{
+		$sql = 'SELECT id_garantia, meses FROM garantia';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 }
 ?>

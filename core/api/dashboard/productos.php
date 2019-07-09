@@ -197,11 +197,26 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'No se encontraron datos';
                     }
                 break;
-            default:
-                exit('Acción no disponible');
+                
+                case 'precioP':
+                if($result['dataset'] = $producto->grafico2()){
+                    $result['status'] = 1;
+                }else{
+                    $result['exception'] = 'No se encontraron datos';
+                }
+            break;
+
+            case 'EstadoP':
+            if($result['dataset'] = $producto->graficoEstado()){
+                $result['status'] = 1;
+            }else{
+                $result['exception'] = 'No se encontraron datos';
+            }
+        break;
+            
+        default:
         }
-        print(json_encode($result));
-    } else {
+        print(json_encode($result));} else {
         exit('Acceso no disponible');
     }
 } else {
