@@ -79,7 +79,7 @@ Dashboard::headerTemplate('Productos');
                 <div class="input-field col s12 m6">
                 <select id="create_garantia" name="create_garantia">
 
-                    <option value="Huevo sudado">Me pica el culo</option>
+                    <option></option>
                     </select>
                     <label>Garantía</label>
                 </div>

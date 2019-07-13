@@ -66,7 +66,7 @@ Dashboard::headerTemplate('Categorías');
     <div class="modal-content">
         <h4 class="center-align">Modificar categoría</h4>
         <form method="post" id="form-update" enctype="multipart/form-data">
-            <input type="hidden" id="id_categoria" name="id_categoria"/>
+            <input type="text" id="id_categoria" name="id_categoria"/>
             <input type="hidden" id="imagen_categoria" name="imagen_categoria"/>
             <div class="row">
                 <div class="input-field col s12 m6">

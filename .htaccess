@@ -2,8 +2,8 @@
 # | Custom error messages/pages                                        |
 # ----------------------------------------------------------------------
 
-ErrorDocument 404 /coffeeshop/resources/pages/error404.html
-ErrorDocument 403 /coffeeshop/resources/pages/error403.html
+ErrorDocument 404 /medicaldriver/resources/pages/error404.html
+ErrorDocument 403 /medicaldriver/resources/pages/error403.html
 
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |

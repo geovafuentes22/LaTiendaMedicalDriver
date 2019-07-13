@@ -4,8 +4,7 @@ class Categorias extends Validator
 	// Declaración de propiedades
 	private $id = null;
 	private $nombre = null;
-	private $imagen = null;
-	private $descripcion = null;
+	private $foto = null;
 	private $ruta = '../../../resources/img/categorias/';
 
 	// Métodos para sobrecarga de propiedades
