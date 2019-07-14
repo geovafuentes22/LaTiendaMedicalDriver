@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2019 a las 07:33:08
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Tiempo de generación: 14-07-2019 a las 03:48:23
+-- Versión del servidor: 10.3.16-MariaDB
+-- Versión de PHP: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -49,10 +51,10 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `foto`) VALUES
-(1, 'Silla de Ruedas', '5d22d10a96236.jpg'),
-(2, 'Bastones', '5d22d11be21aa.jpg'),
-(3, 'Accesorios', '5d22d127863ad.jpg'),
-(4, 'Repuestos', '5d22d134cfcfa.jpg');
+(1, 'Silla de Ruedas', '5d294bebbfee3.jpg'),
+(2, 'Bastones', '5d294bf7dac49.jpg'),
+(3, 'Accesorios', '5d294c037d0ad.jpg'),
+(4, 'Repuestos', '5d294c0e7268a.jpg');
 
 -- --------------------------------------------------------
 
@@ -259,7 +261,7 @@ CREATE TABLE `garantia` (
 INSERT INTO `garantia` (`id_garantia`, `meses`, `estado`) VALUES
 (1, '3 Meses', 1),
 (2, '6 Meses', 1),
-(3, '1 Año', 0);
+(3, '1 Año', 1);
 
 -- --------------------------------------------------------
 
@@ -283,7 +285,7 @@ CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `codigo` varchar(6) NOT NULL,
-  `precio` varchar(50) NOT NULL,
+  `precio` decimal(5,2) NOT NULL,
   `cantidad` varchar(50) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
   `id_garantia` int(11) NOT NULL,
@@ -297,8 +299,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre`, `codigo`, `precio`, `cantidad`, `descripcion`, `id_garantia`, `id_categoria`, `id_estado`, `foto`) VALUES
-(1, 'Silla de Ruedas', '326546', '120', '12', 'prueba', 2, 6, 1, '5d229e1b5d824.jpg'),
-(2, 'Silla Olimpica', '302154', '150', '25', 'Silla para competencias', 3, 1, 1, '5d22d16ecae15.jpg');
+(3, 'Silla Olimpica', '654654', '150.00', '25', 'Silla para competencias', 2, 1, 1, '5d294c3189709.jpg');
 
 -- --------------------------------------------------------
 
@@ -398,62 +399,31 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `categoria`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `garantia`
 --
 ALTER TABLE `garantia`
   MODIFY `id_garantia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `detalle_pedido`
---
-ALTER TABLE `detalle_pedido`
-  ADD CONSTRAINT `detalle_pedido_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `garantia`
---
-ALTER TABLE `garantia`
-  ADD CONSTRAINT `garantia_ibfk_1` FOREIGN KEY (`estado`) REFERENCES `estados` (`id_estado`);
-
---
--- Filtros para la tabla `pedido`
---
-ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_4` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_5` FOREIGN KEY (`id_garantia`) REFERENCES `garantia` (`id_garantia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_6` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
