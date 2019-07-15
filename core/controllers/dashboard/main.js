@@ -4,6 +4,7 @@ $(document).ready(function () {
     grafico_barra();
     graficoEstado();
     grafico3();
+    graficoMayorcito();
 })
 
 const apiProductos = '../../core/api/dashboard/productos.php?action=';
@@ -22,7 +23,6 @@ function showGreeting() {
     }
     $('#greeting').text(greeting);
 }
-
 
 function grafico1() {
     $.ajax({
@@ -49,8 +49,10 @@ function grafico1() {
             } else {
                 console.log(response);
             }
-        })
+        });
 }
+
+
 
 function grafico_barra() {
     $.ajax({
@@ -110,9 +112,10 @@ function grafico3() {
             } else {
                 console.log(response);
             }
-        })
+        });
 
 }
+
 
 
 function graficoEstado() {
@@ -142,3 +145,32 @@ function graficoEstado() {
             }
         });
 }
+
+function graficoMayorcito() {
+    $.ajax({
+            url: apiProductos + 'MayorP',
+            type: 'post',
+            data: null,
+            datatype: 'json'
+        })
+        .done(function (response) {
+            // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
+            if (isJSONString(response)) {
+                const result = JSON.parse(response);
+                // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
+                if (!result.status) {
+                    sweetAlert(4, result.exception, null);
+                }
+                let nombrehiola = [];
+                let productouid = [];
+                result.dataset.forEach(function (rows) {
+                    nombrehiola.push(rows.nombre);
+                    productouid.push(rows.producto);
+                });
+                graficoMayorhola('grafico5', nombrehiola, productouid, 'Cantidad de producto', 'Grafico');
+            } else {
+                console.log(response);
+            }
+        
+        });
+};

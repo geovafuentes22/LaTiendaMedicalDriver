@@ -216,12 +216,7 @@ if (isset($_GET['action'])) {
     } else {
         switch ($_GET['action']) {
             case 'read':
-            if ($cliente->readClientes()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existe al menos un Cliente registrado';
-            } else {
-                    $result['message'] = 'No existen Cliente registrados';
-            }
+
                break;
             case 'register':
                 $_POST = $cliente->validateForm($_POST);
@@ -258,7 +253,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = $cliente->validateForm($_POST);
-                print_r($_POST);
+                
                 if ($cliente->setCorreo($_POST['correo'])) {
                     if ($cliente->checkCorreo()) {
                         if ($cliente->setClave($_POST['clave'])) {
