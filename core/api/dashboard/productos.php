@@ -213,7 +213,14 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No se encontraron datos';
             }
         break;
-            
+
+        case 'MayorP':
+        if($result['dataset'] = $producto->graficoMayor()){
+            $result['status'] = 1;
+        }else{
+            $result['exception'] = 'No se encontraron datos';
+        }
+    break; 
         default:
         }
         print(json_encode($result));} else {

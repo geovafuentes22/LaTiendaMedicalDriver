@@ -5,8 +5,8 @@ Commerce::headerTemplate('Acceder');
 <!-- Formularios para acceder -->
 <div class="container">
 	<h4 class="center-align">ACCEDER</h4>
-	<div id="sesion">
-		<form id="form-sesion" method="post">
+	<div id="form-sesion">
+		<form id="sesion" method="post">
 			<div class="row">
 				<div class="input-field col s12 m6 offset-m3">
 					<i class="material-icons prefix">email</i>

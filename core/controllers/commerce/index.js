@@ -54,7 +54,6 @@ $('#sesion').submit(function()
                 sweetAlert(2, dataset.exception, null);
             }
         } else {
-            console.log(response);
         }
     })
     .fail(function(jqXHR){

@@ -12,8 +12,8 @@ class Commerce
 			<html lang="es">
 			<head>
 				<meta charset="utf-8">
-				<title>Coffeeshop - '.$title.'</title>
-				<link type="image/png" rel="icon" href="../../resources/img/MedicalDriverLogo.png"/>
+				<title>Medicaldriver - '.$title.'</title>
+				<link type="image/png" rel="icon" 	href="../../resources/img/MedicalDriverLogo.png"/>
 				<link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
 				<link type="text/css" rel="stylesheet" href="../../resources/css/icons.css"/>
 				<link type="text/css" rel="stylesheet" href="../../resources/css/commerce.css"/>

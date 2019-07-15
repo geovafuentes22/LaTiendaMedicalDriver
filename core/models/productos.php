@@ -254,7 +254,13 @@ class Productos extends Validator
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
+
+	public function graficoMayor()
+	{
+		$sql = 'SELECT nombre, precio FROM producto ORDER BY precio ASC';
+		$params = array(null);
+		return Database::getRows($sql, $params);
+	}
 }
-
-
+	
 ?>
