@@ -195,7 +195,7 @@ function graficoGarantia(canvas,x,y,leyend,title){
 
     var ctx = canvas;
     var myChart = new Chart(ctx, {
-    type: 'bubble',
+    type: 'bar',
     data: {
         labels: x,
         datasets: [{
@@ -239,7 +239,7 @@ function graficoMayorhola(canvas,x,y,leyend,title){
 
     var ctx = canvas;
     var myChart = new Chart(ctx, {
-    type: 'mixed',
+    type: 'bar',
     data: {
         labels: x,
         datasets: [{
