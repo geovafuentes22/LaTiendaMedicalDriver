@@ -58,7 +58,7 @@ Dashboard::headerTemplate('Productos');
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
                   	<input id="create_precio" type="number" name="create_precio" class="validate" min="0.01" max="999.99" step="any" required/>
-                  	<label for="create_precio">Precio ($)</label>
+                  	<label for="create_precio">Precio ($):</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">description</i>
