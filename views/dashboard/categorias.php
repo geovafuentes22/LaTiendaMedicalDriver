@@ -17,7 +17,7 @@ Dashboard::headerTemplate('Categorías');
     <!-- Botón para abrir ventana de nuevo registro -->
     <div class="input-field center-align col s12 m4">
         <a href="#" onclick="modalCreate()" class="btn waves-effect  deep-orange tooltipped" data-tooltip="Agregar"><i class="material-icons">more_vert</i></a>
-        <a href='../../libraries/reportes/reportecategoria.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Producto'><i class='material-icons'>assignment</i></a>
+        <a href='../../libraries/reportes/reportecategoria.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Categoria' target="_blank"><i class='material-icons'>assignment</i></a>
     </div>
 </div>
 <!-- Tabla para mostrar los registros existentes -->

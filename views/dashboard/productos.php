@@ -17,7 +17,7 @@ Dashboard::headerTemplate('Productos');
     <!-- Botón para abrir ventana de nuevo registro -->
     <div class="input-field center-align col s12 m4">
         <a href="#" onclick="modalCreate()" class="btn waves-effect  deep-orange tooltipped" data-tooltip="Agregar"><i class="material-icons">more_vert</i></a>
-        <a href='../../libraries/reportes/reporteproducto.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Producto'><i class='material-icons'>assignment</i></a>
+        <a href='../../libraries/reportes/reporteproducto.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Producto' target="_blank"><i class='material-icons'>assignment</i></a>
     </div>
 
 </div>
@@ -41,23 +41,24 @@ Dashboard::headerTemplate('Productos');
 </table>
 <!-- Ventana para crear un nuevo Producto -->
 <div id="modal-create" class="modal">
-    <div class="modal-content">
-        <h4 class="center-align">Nuevo Producto</h4>
+<div class="modal-content">
+        <h4 class="center-align">Crear Nuevo producto</h4>
         <form method="post" id="form-create" enctype="multipart/form-data">
-            <div class="input-field col s12 m6">
+            <div class="row">
+                <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">note_add</i>
                   	<input id="create_nombre" type="text" name="create_nombre" class="validate" required/>
                   	<label for="create_nombre">Nombre</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
-                  	<input id="create_codigo" type="text" name="create_codigo"  class="validate"  maxlength="6" required />
+                  	<input id="create_codigo" type="text" name="create_codigo"  class="validate"  maxlength="6" required validate/>
                   	<label for="create_codigo">Codigo</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
                   	<input id="create_precio" type="number" name="create_precio" class="validate" min="0.01" max="999.99" step="any" required/>
-                  	<label for="create_precio">Precio ($)</label>
+                  	<label for="create_precio">Precio ($):</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">description</i>
@@ -70,22 +71,19 @@ Dashboard::headerTemplate('Productos');
                   	<label for="create_descripcion">Descripción</label>
                 </div>
                 <div class="input-field col s12 m6">
-                <select id="create_categoria" name="create_categoria">
-
+                    <select id="create_categoria" name="create_categoria">
                     </select>
                     <label>Categoría</label>
                 </div>
                 <div class="input-field col s12 m6">
-                <select id="create_garantia" name="create_garantia">
-
-                    <option></option>
+                    <select id="create_garantia" name="create_garantia">
                     </select>
                     <label>Garantía</label>
                 </div>
               	<div class="file-field input-field col s12 m6">
-                    <div class="btn waves-effect">
+                  <div class="btn waves-effect  brown tooltipped"  data-tooltip="Actualizar foto">
                         <span><i class="material-icons">image</i></span>
-                        <input id="create_archivo" type="file" name="create_archivo"/>
+                        <input id="update_archivo" type="file" name="update_archivo"/>
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Imagen valida 500x500"/>
@@ -97,7 +95,7 @@ Dashboard::headerTemplate('Productos');
                             <span>Estado:</span>
                             <label>
                                 <i class="material-icons">visibility_off</i>
-                                <input id="create_estado" type="checkbox" name="create_estado"/>
+                                <input id="create_estado" type="checkbox" name="create_estado" checked/>
                                 <span class="lever"></span>
                                 <i class="material-icons">visibility</i>
                             </label>
@@ -105,10 +103,9 @@ Dashboard::headerTemplate('Productos');
                     </p>
                 </div>
             </div>
-            </div>
             <div class="row center-align">
-                <a href="#" data-tooltip="Cancelar">Cancela</a>
-                <button type="submit" data-tooltip="Crear">Guardar</button>
+            <a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+                <button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Crear"><i class="material-icons">swap_vert</i></button>
             </div>
         </form>
     </div>
@@ -180,8 +177,8 @@ Dashboard::headerTemplate('Productos');
                 </div>
             </div>
             <div class="row center-align">
-                <a href="#" class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">cancel</i></a>
-                <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Modificar"><i class="material-icons">save</i></button>
+            <a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+                <button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>
             </div>
         </form>
     </div>
