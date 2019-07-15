@@ -17,7 +17,7 @@ Dashboard::headerTemplate('Productos');
     <!-- Botón para abrir ventana de nuevo registro -->
     <div class="input-field center-align col s12 m4">
         <a href="#" onclick="modalCreate()" class="btn waves-effect  deep-orange tooltipped" data-tooltip="Agregar"><i class="material-icons">more_vert</i></a>
-        <a href='../../libraries/reportes/reporteproducto.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Producto'><i class='material-icons'>assignment</i></a>
+        <a href='../../libraries/reportes/reporteproducto.php' class='btn waves-effect indigo tooltipped fantasmazul' data-tooltip='Reporte de Producto' target="_blank"><i class='material-icons'>assignment</i></a>
     </div>
 
 </div>
@@ -53,7 +53,7 @@ Dashboard::headerTemplate('Productos');
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
                   	<input id="create_codigo" type="text" name="create_codigo"  class="validate"  maxlength="6" required validate/>
-                  	<label for="create_precio">Codigo</label>
+                  	<label for="create_codigo">Codigo</label>
                 </div>
                 <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">shopping_cart</i>
@@ -81,9 +81,9 @@ Dashboard::headerTemplate('Productos');
                     <label>Garantía</label>
                 </div>
               	<div class="file-field input-field col s12 m6">
-                    <div class="btn waves-effect">
+                  <div class="btn waves-effect  brown tooltipped"  data-tooltip="Actualizar foto">
                         <span><i class="material-icons">image</i></span>
-                        <input id="create_archivo" type="file" name="create_archivo"/>
+                        <input id="update_archivo" type="file" name="update_archivo"/>
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Imagen valida 500x500"/>
@@ -95,7 +95,7 @@ Dashboard::headerTemplate('Productos');
                             <span>Estado:</span>
                             <label>
                                 <i class="material-icons">visibility_off</i>
-                                <input id="create_estado" type="checkbox" name="create_estado"/>
+                                <input id="create_estado" type="checkbox" name="create_estado" checked/>
                                 <span class="lever"></span>
                                 <i class="material-icons">visibility</i>
                             </label>
