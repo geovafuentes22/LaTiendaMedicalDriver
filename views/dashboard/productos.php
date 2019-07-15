@@ -44,7 +44,6 @@ Dashboard::headerTemplate('Productos');
     <div class="modal-content">
         <h4 class="center-align">Nuevo Producto</h4>
         <form method="post" id="form-create" enctype="multipart/form-data">
-            <div class="row">
             <div class="input-field col s12 m6">
                   	<i class="material-icons prefix">note_add</i>
                   	<input id="create_nombre" type="text" name="create_nombre" class="validate" required/>
@@ -108,8 +107,8 @@ Dashboard::headerTemplate('Productos');
             </div>
             </div>
             <div class="row center-align">
-                <a href="#" class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">cancel</i></a>
-                <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Crear"><i class="material-icons">save</i></button>
+                <a href="#" data-tooltip="Cancelar">Cancela</a>
+                <button type="submit" data-tooltip="Crear">Guardar</button>
             </div>
         </form>
     </div>
