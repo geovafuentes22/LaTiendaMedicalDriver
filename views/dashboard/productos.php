@@ -83,7 +83,7 @@ Dashboard::headerTemplate('Productos');
               	<div class="file-field input-field col s12 m6">
                   <div class="btn waves-effect  brown tooltipped"  data-tooltip="Actualizar foto">
                         <span><i class="material-icons">image</i></span>
-                        <input id="update_archivo" type="file" name="update_archivo"/>
+                        <input id="create_archivo" type="file" name="create_archivo"/>
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Imagen valida 500x500"/>

@@ -6,7 +6,8 @@ require_once("../../core/helpers/validator.php");
 require_once("../../core/models/categorias.php");
 
 ini_set('date.timezone', 'America/El_Salvador');
-$pdf = new PDF();
+//tenemos el p y L en orientacion, mm,cm,in,pt en texto, A2,A3,A4,Letter y Legal en texto mixto
+$pdf = new PDF('p','mm','Letter');
 $categoria = new Categorias();
 $ruta = '../../resources/img/categorias/';
 $pdf->head('REPORTE DE LAS CATEGORIAS MI PRINCESA');
