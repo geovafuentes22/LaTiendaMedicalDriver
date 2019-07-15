@@ -4,12 +4,31 @@ $(document).ready(function()
 })
 
 // Constante para establecer la ruta y parámetros de comunicación con la API
-const api = '../../core/api/dashboard/usuarios.php?action=';
+const apiRegistrar = '../../core/api/commerce/usuarios.php?action=';
 
 // Función para verificar si existen usuarios en el sitio privado
 function checkUsuarios()
 {
     $.ajax({
+        url: apiRegistrar + 'read',
+        type: 'post',
+        data: null,
+        datatype: 'json'
+    })
+    .done(function(response){
+        if (isJSONString(response)) {
+            const dataset = JSON.parse(response);
+            if (dataset.status == 1) {
+                //sweetAlert(3, dataset.exception, 'registrarse.php');
+            }
+        } else {
+            console.log(response);
+        }
+    })
+    .fail(function(jqXHR){
+        console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
+    });
+    /*$.ajax({
         url: api + 'read',
         type: 'post',
         data: null,
@@ -30,7 +49,7 @@ function checkUsuarios()
     .fail(function(jqXHR){
         // Se muestran en consola los posibles errores de la solicitud AJAX
         console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
-    });
+    });*/
 }
 
 // Función para validar el usuario al momento de iniciar sesión
@@ -49,7 +68,7 @@ $('#form-register').submit(function()
             const dataset = JSON.parse(response);
             // Se comprueba si la respuesta es satisfactoria, sino se muestra la excepción
             if (dataset.status) {
-                sweetAlert(1, dataset.message, 'index.php');
+                sweetAlert(1, dataset.message, 'acceder.php');
             } else {
                 sweetAlert(2, dataset.exception, null);
             }

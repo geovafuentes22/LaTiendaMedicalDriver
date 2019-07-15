@@ -13,7 +13,7 @@ class Commerce
 			<head>
 				<meta charset="utf-8">
 				<title>Coffeeshop - '.$title.'</title>
-				<link type="image/png" rel="icon" href="../../resources/img/logo.png"/>
+				<link type="image/png" rel="icon" href="../../resources/img/MedicalDriverLogo.png"/>
 				<link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
 				<link type="text/css" rel="stylesheet" href="../../resources/css/icons.css"/>
 				<link type="text/css" rel="stylesheet" href="../../resources/css/commerce.css"/>
@@ -22,7 +22,7 @@ class Commerce
 			<body>
 				<header>
 					<div class="navbar-fixed">
-						<nav class="green">
+						<nav class="black">
 							<div class="nav-wrapper">
 								<a href="index.php" class="brand-logo"><img src="../../resources/img/logo.png" height="60"></a>
 								<a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -49,7 +49,7 @@ class Commerce
 	{
 		print('
 				</main>
-				<footer class="page-footer green">
+				<footer class="page-footer black">
 					<div class="container">
 						<div class="row">
 							<div class="col s12 m6 l6">
@@ -86,60 +86,159 @@ class Commerce
 			</html>
 		');
 	}
-
-	public static function modals()
+private function modals()
 	{
 		print('
-			<!-- Términos y condiciones -->
-			<div id="terminos" class="modal">
+			<div id="modal-profile" class="modal">
 				<div class="modal-content">
-					<h4 class="center-align">TÉRMINOS Y CONDICIONES</h4>
-					<p>Nuestra empresa ofrece los mejores productos a nivel nacional con una calidad garantizada y...</p>
-				</div>
-				<div class="divider"></div>
-				<div class="modal-footer">
-					<a href="#!" class="modal-action modal-close btn waves-effect"><i class="material-icons">done</i></a>
+					<h4 class="center-align">Editar perfil</h4>
+					<form method="post" id="form-profile">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">pets</i>
+								<input id="profile_nombres" type="text" name="profile_nombres" class="validate" required/>
+								<label for="profile_nombres">Nombres</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">perm_contact_calendar</i>
+								<input id="profile_apellidos" type="text" name="profile_apellidos" class="validate" required/>
+								<label for="profile_apellidos">Apellidos</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">email</i>
+								<input id="profile_correo" type="email" name="profile_correo" class="validate" required/>
+								<label for="profile_correo">Correo</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">sentiment_satisfied</i>
+								<input id="profile_alias" type="text" name="profile_alias" class="validate" required/>
+								<label for="profile_alias">Alias</label>
+							</div>
+						</div>
+						<div class="row center-align">
+						<a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+						<button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Guardar"><i class="material-icons">swap_vert</i></button>
+						</div>
+					</form>
 				</div>
 			</div>
 
-			<!-- Misión -->
-			<div id="mision" class="modal">
+			<div id="modal-password" class="modal">
 				<div class="modal-content">
-					<h4 class="center-align">MISIÓN</h4>
-					<p>Ofrecer los mejores productos a nivel nacional para satisfacer a nuestros clientes y...</p>
-				</div>
-				<div class="divider"></div>
-				<div class="modal-footer">
-					<a href="#!" class="modal-action modal-close btn waves-effect"><i class="material-icons">done</i></a>
+					<h4 class="center-align">Cambiar contraseña</h4>
+					<form method="post" id="form-password">
+						<div class="row center-align">
+							<label>CLAVE ACTUAL</label>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">sd_storage</i>
+								<input id="clave_actual_1" type="password" name="clave_actual_1" class="validate" required/>
+								<label for="clave_actual_1">Clave</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">sd_storage</i>
+								<input id="clave_actual_2" type="password" name="clave_actual_2" class="validate" required/>
+								<label for="clave_actual_2">Confirmar clave</label>
+							</div>
+						</div>
+						<div class="row center-align">
+							<label>CLAVE NUEVA</label>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">sentiment_very_satisfied</i>
+								<input id="clave_nueva_1" type="password" name="clave_nueva_1" class="validate" required/>
+								<label for="clave_nueva_1">Clave</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<i class="material-icons prefix">sentiment_very_satisfied</i>
+								<input id="clave_nueva_2" type="password" name="clave_nueva_2" class="validate" required/>
+								<label for="clave_nueva_2">Confirmar clave</label>
+							</div>
+						</div>
+						<div class="row center-align">
+						<a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+						<button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>
+						</div>
+					</form>
 				</div>
 			</div>
+			<!--<div id="modal-profile" class="modal">
+			<div class="modal-content">
+				<h4 class="center-align">Editar perfil</h4>
+				<form method="post" id="form-profile">
+					<div class="row">
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">pets</i>
+							<input id="profile_nombres" type="text" name="profile_nombres" class="validate" required/>
+							<label for="profile_nombres">Nombres</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">perm_contact_calendar</i>
+							<input id="profile_apellidos" type="text" name="profile_apellidos" class="validate" required/>
+							<label for="profile_apellidos">Apellidos</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">email</i>
+							<input id="profile_correo" type="email" name="profile_correo" class="validate" required/>
+							<label for="profile_correo">Correo</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">sentiment_satisfied</i>
+							<input id="profile_alias" type="text" name="profile_alias" class="validate" required/>
+							<label for="profile_alias">Alias</label>
+						</div>
+					</div>
+					<div class="row center-align">
+					<a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+					<button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Guardar"><i class="material-icons">swap_vert</i></button>
+					</div>
+				</form>
+			</div>
+		</div>
 
-			<!-- Visión -->
-			<div id="vision" class="modal">
-				<div class="modal-content">
-					<h4 class="center-align">VISIÓN</h4>
-					<p>Ser la empresa lider en la región ofreciendo productos de calidad a precios accesibles y...</p>
-				</div>
-				<div class="divider"></div>
-				<div class="modal-footer">
-					<a href="#!" class="modal-action modal-close btn waves-effect"><i class="material-icons">done</i></a>
-				</div>
+		<div id="modal-password" class="modal">
+			<div class="modal-content">
+				<h4 class="center-align">Cambiar contraseña</h4>
+				<form method="post" id="form-password">
+					<div class="row center-align">
+						<label>CLAVE ACTUAL</label>
+					</div>
+					<div class="row">
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">sd_storage</i>
+							<input id="clave_actual_1" type="password" name="clave_actual_1" class="validate" required/>
+							<label for="clave_actual_1">Clave</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">sd_storage</i>
+							<input id="clave_actual_2" type="password" name="clave_actual_2" class="validate" required/>
+							<label for="clave_actual_2">Confirmar clave</label>
+						</div>
+					</div>
+					<div class="row center-align">
+						<label>CLAVE NUEVA</label>
+					</div>
+					<div class="row">
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">sentiment_very_satisfied</i>
+							<input id="clave_nueva_1" type="password" name="clave_nueva_1" class="validate" required/>
+							<label for="clave_nueva_1">Clave</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<i class="material-icons prefix">sentiment_very_satisfied</i>
+							<input id="clave_nueva_2" type="password" name="clave_nueva_2" class="validate" required/>
+							<label for="clave_nueva_2">Confirmar clave</label>
+						</div>
+					</div>
+					<div class="row center-align">
+					<a href="#" class="btn waves-effect red tooltipped modal-close" data-tooltip="Cancelar"><i class="material-icons">remove</i></a>
+					<button type="submit" class="btn waves-effect black tooltipped" data-tooltip="Actualizar"><i class="material-icons">swap_vert</i></button>
+					</div>
+				</form>
 			</div>
-
-			<!-- Valores -->
-			<div id="valores" class="modal">
-				<div class="modal-content center-align">
-					<h4>VALORES</h4>
-					<p>Responsabilidad</p>
-					<p>Honestidad</p>
-					<p>Seguridad</p>
-					<p>Calidad</p>
-				</div>
-				<div class="divider"></div>
-				<div class="modal-footer">
-					<a href="#!" class="modal-action modal-close btn waves-effect"><i class="material-icons">done</i></a>
-				</div>
-			</div>
+		</div>-->
 		');
 	}
 }

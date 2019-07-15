@@ -40,12 +40,6 @@ Commerce::headerTemplate('Tu tienda de café');
     <h4 class="center blue-text" id="title"></h4>
     <div class="row" id="catalogo"></div>
 </div>
-<!-- Efecto parallax con una altura de 300px -->
-<div class="parallax-container">
-	<div class="parallax">
-        <img id="parallax">
-    </div>
-</div>
 <?php
 Commerce::footerTemplate('catalogo.js');
 ?>
