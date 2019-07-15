@@ -20,8 +20,8 @@ function checkUsuarios()
         if (isJSONString(response)) {
             const dataset = JSON.parse(response);
             // Se comprueba que no hay usuarios registrados para redireccionar al registro del primer usuario
-            if (dataset.status == 2) {
-                //sweetAlert(3, dataset.message, 'register.php');
+            if (!dataset.status) {
+                sweetAlert(3, dataset.message, 'register.php');
             }
         } else {
             console.log(response);
@@ -34,13 +34,13 @@ function checkUsuarios()
 }
 
 // Función para validar el usuario al momento de iniciar sesión
-$('#form-sesion').submit(function()
+$('#sesion').submit(function()
 {
     event.preventDefault();
     $.ajax({
         url: api + 'login',
         type: 'post',
-        data: $('#form-sesion').serialize(),
+        data: $('#sesion').serialize(),
         datatype: 'json'
     })
     .done(function(response){
