@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'readProductos':
-            if ($producto->setCategoria($_POST['id_categoria'])) {
+            if ($producto->setNombre($_POST['id_categoria'])) {
                 if ($result['dataset'] = $producto->readProductos()) {
                     $result['status'] = 1;
                 } else {

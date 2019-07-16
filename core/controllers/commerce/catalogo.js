@@ -28,15 +28,14 @@ function readCategorias()
                         <div class="col s12 m6 l4">
                             <div class="card hoverable">
                                 <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="../../resources/img/categorias/${row.imagen_categoria}">
+                                    <img class="activator" src="../../resources/img/categorias/${row.foto}">
                                 </div>
                                 <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">${row.nombre_categoria}<i class="material-icons right">more_vert</i></span>
-                                    <p class="center"><a href="#" onclick="readProductosCategoria(${row.id_categoria}, '${row.nombre_categoria}')" class="tooltipped" data-tooltip="Ver más"><i class="material-icons small">local_cafe</i></a></p>
+                                    <span class="card-title activator grey-text text-darken-4">${row.nombre}<i class="material-icons right">more_vert</i></span>
+                                    <p class="center"><a href="#" onclick="readProductosCategoria(${row.id_categoria}, '${row.nombre}')" class="tooltipped" data-tooltip="Ver más"><i class="material-icons small">local_cafe</i></a></p>
                                 </div>
                                 <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">${row.nombre_categoria}<i class="material-icons right">close</i></span>
-                                    <p>${row.descripcion_categoria}</p>
+                                    <span class="card-title grey-text text-darken-4">${row.nombre}<i class="material-icons right">close</i></span>
                                 </div>
                             </div>
                         </div>
@@ -83,12 +82,12 @@ function readProductosCategoria(id, categoria)
                         <div class="col s12 m6 l4">
                             <div class="card hoverable">
                                 <div class="card-image">
-                                    <img src="../../resources/img/productos/${row.imagen_producto}" class="materialboxed">
+                                    <img src="../../resources/img/productos/${row.foto}" class="materialboxed">
                                     <a href="#" onclick="getProducto(${row.id_producto})" class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-tooltip="Ver detalle"><i class="material-icons">add</i></a>
                                 </div>
                                 <div class="card-content">
-                                    <span class="card-title">${row.nombre_producto}</span>
-                                    <p>Precio(US$) ${row.precio_producto}</p>
+                                    <span class="card-title">${row.nombre}</span>
+                                    <p>Precio(US$) ${row.precio}</p>
                                 </div>
                             </div>
                         </div>
@@ -136,9 +135,8 @@ function getProducto(id)
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
-                                <h3 class="header">${result.dataset.nombre_producto}</h3>
-                                <p>${result.dataset.descripcion_producto}</p>
-                                <p><b>Precio(US$) ${result.dataset.precio_producto}</b></p>
+                                <h3 class="header">${result.dataset.nombre}</h3>
+                                <p><b>Precio(US$) ${result.dataset.precio}</b></p>
                             </div>
                             <div class="card-action">
                                 <form method="post" id="form-cantidad">
