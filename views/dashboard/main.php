@@ -27,7 +27,7 @@ Dashboard::headerTemplate('Bienvenido');
         <canvas id='grafico4'></canvas>
     </div>
     <br>
-    <h4>Productos del más caro al más barato</h4>
+    <h4>Top 5 productos con mayor precio</h4>
     <div class="row">
         <canvas id='grafico5'></canvas>
     </div>

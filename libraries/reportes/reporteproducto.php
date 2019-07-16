@@ -6,7 +6,7 @@ require_once("../../core/helpers/validator.php");
 require_once("../../core/models/productos.php");
 
 ini_set('date.timezone', 'America/El_Salvador');
-$pdf = new PDF();
+$pdf = new PDF('');
 $productos = new Productos();
 $ruta = '../../resources/img/productos/';
 $pdf->head('REPORTE DE PRODUCTO MI VIDA');

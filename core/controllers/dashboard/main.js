@@ -165,7 +165,7 @@ function graficoMayorcito() {
                 let productouid = [];
                 result.dataset.forEach(function (rows) {
                     nombrehiola.push(rows.nombre);
-                    productouid.push(rows.producto);
+                    productouid.push(rows.precio);
                 });
                 graficoMayorhola('grafico5', nombrehiola, productouid, 'Cantidad de producto', 'Grafico');
             } else {
