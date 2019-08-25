@@ -18,10 +18,14 @@ function checkUsuarios()
     .done(function(response){
         // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
         if (isJSONString(response)) {
-            const dataset = JSON.parse(response);
-            // Se comprueba que no hay usuarios registrados para redireccionar al registro del primer usuario
-            if (dataset.status == 2) {
-                //sweetAlert(3, dataset.message, 'register.php');
+            const result = JSON.parse(response);
+            if (result.session) {
+                // Se comprueba que no hay usuarios registrados para redireccionar al registro del primer usuario
+                if (result.status == 2) {
+                    sweetAlert(3, result.message, 'register.php');
+                }
+            } else {
+                sweetAlert(3, result.message, 'index.php');
             }
         } else {
             console.log(response);

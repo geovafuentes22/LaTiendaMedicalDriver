@@ -5,11 +5,25 @@ require_once('../../models/usuarios.php');
 
 //Se comprueba si existe una acción a realizar, de lo contrario se muestra un mensaje de error
 if (isset($_GET['action'])) {
-    session_start();
+    session_start(); 
     $usuario = new Usuarios();
-    $result = array('status' => 0, 'message' => null, 'exception' => null);
+    $result = array('status' => 0, 'message' => null, 'exception' => null, 'session' => 1);
     //Se verifica si existe una sesión iniciada como administrador para realizar las operaciones correspondientes
     if (isset($_SESSION['id_usuario'])) {
+        //sino, calculamos el tiempo transcurrido
+        $tiempo_transcurrido = time() - $_SESSION["ultimoAcceso"];
+
+        //comparamos el tiempo transcurrido  
+        if ($tiempo_transcurrido >= 5) {
+            //si pasaron 10 minutos o más  
+            session_destroy(); // destruyo la sesión  
+            $result['session'] = 0;//envío al usuario a la pag. de autenticación  
+            $result['message'] = 'Su sesión ha caducado';
+            exit(json_encode($result));
+        } else {  
+            $_SESSION["ultimoAcceso"] = time();
+        }
+
         switch ($_GET['action']) {
             case 'logout':
                 if (session_destroy()) {
@@ -228,6 +242,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existe al menos un usuario registrado';
                 } else {
+                    $result['status'] = 2;
                     $result['message'] = 'No existen usuarios registrados';
                 }
                 break;
@@ -272,6 +287,7 @@ if (isset($_GET['action'])) {
                             if ($usuario->checkPassword()) {
                                 $_SESSION['id_usuario'] = $usuario->getId();
                                 $_SESSION['alias_usuario'] = $usuario->getAlias();
+                                $_SESSION["ultimoAcceso"] = time();  
                                 $result['status'] = 1;
                                 $result['message'] = 'Autenticación correcta';
                             } else {

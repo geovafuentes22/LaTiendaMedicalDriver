@@ -69,7 +69,7 @@ class Garantias extends Validator
 
 	public function searchGarantia($value)
 	{
-		$sql = 'SELECT * FROM garantia WHERE meses LIKE ? OR id_garantia LIKE ? ORDER BY meses';
+		$sql = 'SELECT garantia.id_garantia,garantia.meses, garantia.estado, estados.id_estado, estados.estado FROM garantia INNER JOIN estados on estados.id_estado=garantia.estado WHERE garantia.meses LIKE ? OR garantia.id_garantia LIKE ? ORDER BY garantia.meses';
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}

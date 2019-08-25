@@ -121,8 +121,8 @@ class Clientes extends Validator
 
 	public function searchCliente($value)
 	{
-		$sql = 'SELECT * FROM cliente WHERE nombre LIKE ? OR id_cliente LIKE ? ORDER BY nombre';
-		$params = array("%$value%", "%$value%");
+		$sql = 'SELECT * FROM cliente WHERE nombre LIKE ? OR id_cliente LIKE ? OR Dui LIKE ? OR apellido LIKE ? ORDER BY nombre';
+		$params = array("%$value%", "%$value%", "%$value%", "%$value%");
 		return Database::getRows($sql, $params);
 	}
 

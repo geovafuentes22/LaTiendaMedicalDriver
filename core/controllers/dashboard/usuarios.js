@@ -143,17 +143,21 @@ function modalUpdate(id)
         // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado consola
         if (isJSONString(response)) {
             const result = JSON.parse(response);
-            // Se comprueba si el resultado es satisfactorio para mostrar los valores en el formulario, sino se muestra la excepción
-            if (result.status) {
-                $('#id_usuario').val(result.dataset.id_usuario);
-                $('#update_nombres').val(result.dataset.nombres_usuario);
-                $('#update_apellidos').val(result.dataset.apellidos_usuario);
-                $('#update_correo').val(result.dataset.correo_usuario);
-                $('#update_alias').val(result.dataset.alias_usuario);
-                M.updateTextFields();
-                $('#modal-update').modal('open');
+            if (result.session) {
+                // Se comprueba si el resultado es satisfactorio para mostrar los valores en el formulario, sino se muestra la excepción
+                if (result.status) {
+                    $('#id_usuario').val(result.dataset.id_usuario);
+                    $('#update_nombres').val(result.dataset.nombres_usuario);
+                    $('#update_apellidos').val(result.dataset.apellidos_usuario);
+                    $('#update_correo').val(result.dataset.correo_usuario);
+                    $('#update_alias').val(result.dataset.alias_usuario);
+                    M.updateTextFields();
+                    $('#modal-update').modal('open');
+                } else {
+                    sweetAlert(2, result.exception, null);
+                }
             } else {
-                sweetAlert(2, result.exception, null);
+                sweetAlert(2, result.message, 'index.php');
             }
         } else {
             console.log(response);

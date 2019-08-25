@@ -32,17 +32,21 @@ function modalProfile()
         // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
         if (isJSONString(response)) {
             const result = JSON.parse(response);
-            // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
-            if (result.status) {
-                $('#profile_nombres').val(result.dataset.nombres_usuario);
-                $('#profile_apellidos').val(result.dataset.apellidos_usuario);
-                $('#profile_correo').val(result.dataset.correo_usuario);
-                $('#profile_alias').val(result.dataset.alias_usuario);
-                M.updateTextFields();
-                $('#modal-profile').modal('open');
+            if (result.session) {
+                // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
+                if (result.status) {
+                    $('#profile_nombres').val(result.dataset.nombres_usuario);
+                    $('#profile_apellidos').val(result.dataset.apellidos_usuario);
+                    $('#profile_correo').val(result.dataset.correo_usuario);
+                    $('#profile_alias').val(result.dataset.alias_usuario);
+                    M.updateTextFields();
+                    $('#modal-profile').modal('open');
+                } else {
+                    sweetAlert(2, result.exception, null);
+                }
             } else {
-                sweetAlert(2, result.exception, null);
-            }
+                sweetAlert(2, result.message, 'index.php');
+            } 
         } else {
             console.log(response);
         }
