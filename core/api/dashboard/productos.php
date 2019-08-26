@@ -10,6 +10,7 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador para realizar las operaciones correspondientes
 	if (isset($_SESSION['id_usuario'])) {
+        //require_once('sesioncaducada.php');
         switch ($_GET['action']) {
             case 'read':
                 if ($result['dataset'] = $producto->listProducto()) {

@@ -46,23 +46,26 @@ function showTable()
         data: null,
         datatype: 'json'
     })
-    .done(function(response){
-        // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
-        if (isJSONString(response)) {
-            const result = JSON.parse(response);
-            // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
-            if (!result.status) {
-                sweetAlert(4, result.exception, null);
+        .done(function(response){
+            // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
+            if (isJSONString(response)) {
+                const result = JSON.parse(response);
+                // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
+            if(result.session){                 
+                if (!result.status) {
+                    sweetAlert(4, result.exception, null);
+                }}else{
+                sweetAlert(4, result.message, 'index.php');
+                }
+                fillTable(result.dataset);
+            } else {
+                console.log(response);
             }
-            fillTable(result.dataset);
-        } else {
-            console.log(response);
-        }
-    })
-    .fail(function(jqXHR){
-        // Se muestran en consola los posibles errores de la solicitud AJAX
-        console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
-    });
+        })
+        .fail(function(jqXHR){
+            // Se muestran en consola los posibles errores de la solicitud AJAX
+            console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
+        });
 }
 
 // Función para mostrar los resultados de una búsqueda
@@ -86,7 +89,7 @@ $('#form-search').submit(function()
             } else {
                 sweetAlert(3, result.exception, null);
             }
-        } else {
+    } else {
             console.log(response);
         }
     })
@@ -108,6 +111,8 @@ function modalCreate()
 // Función para crear un nuevo registro
 $('#form-create').submit(function()
 {
+    
+
     event.preventDefault();
     $.ajax({
         url: api + 'create',

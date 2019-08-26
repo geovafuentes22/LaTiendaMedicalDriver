@@ -15,7 +15,7 @@ if (isset($_GET['action'])) {
 
         //comparamos el tiempo transcurrido  
         if ($tiempo_transcurrido >= 5) {
-            //si pasaron 10 minutos o más  
+            //si pasaron 5 segundos o más  
             session_destroy(); // destruyo la sesión  
             $result['session'] = 0;//envío al usuario a la pag. de autenticación  
             $result['message'] = 'Su sesión ha caducado';
