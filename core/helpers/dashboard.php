@@ -92,25 +92,11 @@ class Dashboard
 				');
 			}
 		}
+			
+	}
 
-//Pruebassss
-		$tiempo_transcurrido = time() - $_SESSION["ultimoAcceso"];
 
-        //comparamos el tiempo transcurrido  
-        if ($tiempo_transcurrido > 5) {
-			//si pasaron 5 segundos o más 
-			echo '<script>';
-			echo 'alert("mayor que 5");';
-			echo '</script>';
-		}
-		else{
-			echo '<script>';
-			echo 'alert("menor");';
-			echo '</script>';
-		}
-	}////////////////////////////
-
-	public static function footerTemplate($controller)
+public static function footerTemplate($controller)
 	{
 		print('
 					</main>

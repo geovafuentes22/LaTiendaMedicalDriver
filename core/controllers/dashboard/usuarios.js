@@ -42,11 +42,16 @@ function showTable()
         // Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
         if (isJSONString(response)) {
             const result = JSON.parse(response);
-            // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
-            if (!result.status) {
-                sweetAlert(4, result.exception, null);
+            // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción    
+            if(result.session){         
+                if (!result.status) {
+                    sweetAlert(4, result.exception, null);
+                   
+                }
+                fillTable(result.dataset);
+            }else{
+                sweetAlert(1,result.message);
             }
-            fillTable(result.dataset);
         } else {
             console.log(response);
         }

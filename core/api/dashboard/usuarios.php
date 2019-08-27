@@ -10,20 +10,7 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'session' => 1);
     //Se verifica si existe una sesión iniciada como administrador para realizar las operaciones correspondientes
     if (isset($_SESSION['id_usuario'])) {
-        //sino, calculamos el tiempo transcurrido
-        $tiempo_transcurrido = time() - $_SESSION["ultimoAcceso"];
-
-        //comparamos el tiempo transcurrido  
-        if ($tiempo_transcurrido >= 5) {
-            //si pasaron 5 segundos o más  
-            session_destroy(); // destruyo la sesión  
-            $result['session'] = 0;//envío al usuario a la pag. de autenticación  
-            $result['message'] = 'Su sesión ha caducado';
-            exit(json_encode($result));
-        } else {  
-            $_SESSION["ultimoAcceso"] = time();
-        }
-
+        require_once('sesioncaducada.php');
         switch ($_GET['action']) {
             case 'logout':
                 if (session_destroy()) {

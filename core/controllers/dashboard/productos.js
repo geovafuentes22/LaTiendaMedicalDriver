@@ -54,10 +54,12 @@ function showTable()
             if(result.session){                 
                 if (!result.status) {
                     sweetAlert(4, result.exception, null);
-                }}else{
-                sweetAlert(4, result.message, 'index.php');
+                    
                 }
                 fillTable(result.dataset);
+            }else{
+                sweetAlert(2, result.message, 'index.php');
+                }
             } else {
                 console.log(response);
             }

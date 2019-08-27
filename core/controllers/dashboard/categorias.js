@@ -47,7 +47,8 @@ function showTable()
                 sweetAlert(4, result.exception, null);
             }
             fillTable(result.dataset);
-        } else {
+        }
+         else {
             console.log(response);
         }
     })

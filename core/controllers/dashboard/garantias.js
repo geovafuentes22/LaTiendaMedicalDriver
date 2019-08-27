@@ -43,10 +43,14 @@ function showTable()
         if (isJSONString(response)) {
             const result = JSON.parse(response);
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
+            if(result.session){
             if (!result.status) {
                 sweetAlert(4, result.exception, null);
             }
             fillTable(result.dataset);
+        }else{
+            sweetAlert(2,result.message,'index.php');
+        }
         } else {
             console.log(response);
         }
