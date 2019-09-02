@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2019 a las 07:45:42
+-- Tiempo de generación: 19-08-2019 a las 13:22:54
 -- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.7
 
@@ -54,7 +54,8 @@ INSERT INTO `categoria` (`id_categoria`, `nombre`, `foto`) VALUES
 (1, 'Silla de Ruedas', '5d294bebbfee3.jpg'),
 (2, 'Bastones', '5d294bf7dac49.jpg'),
 (3, 'Accesorios', '5d294c037d0ad.jpg'),
-(4, 'Repuestos', '5d294c0e7268a.jpg');
+(4, 'Repuestos', '5d294c0e7268a.jpg'),
+(5, 'Zapatos', '5d2c898ca8f07.jpg');
 
 -- --------------------------------------------------------
 
@@ -299,7 +300,15 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre`, `codigo`, `precio`, `cantidad`, `descripcion`, `id_garantia`, `id_categoria`, `id_estado`, `foto`) VALUES
-(3, 'Silla Olimpica', '654654', '150.00', '25', 'Silla para competencias', 2, 1, 1, '5d294c3189709.jpg');
+(3, 'Silla Olimpica', '654654', '150.00', '25', 'Silla para competencias', 2, 1, 1, '5d294c3189709.jpg'),
+(4, 'Baston LGB', '465465', '80.00', '15', 'Bastones para 180 LB', 3, 2, 1, '5d2c82874d341.jpg'),
+(5, 'Accesorios', '654846', '60.00', '15', 'Accesorios', 1, 3, 1, '5d2c861336711.jpg'),
+(6, 'Repuestos', '879879', '25.00', '15', 'Repuestos para sillas y bastones', 1, 4, 1, '5d2c86458fdf4.jpg'),
+(7, 'Repuestos CLS', '656656', '25.00', '10', 'Repuestos sentadedoros', 1, 4, 1, '5d2c8936b0236.jpg'),
+(8, 'Zapatos', '022132', '60.00', '5', 'Zapatos para dedos', 1, 5, 1, '5d2c89aec49f0.jpg'),
+(9, 'Zapatos', '369874', '35.00', '5', 'Zapatos para niños', 1, 5, 1, '5d2c89f2c4297.jpg'),
+(11, 'Silla', '987987', '150.00', '25', 'Hola', 2, 1, 1, '5d2dd7ef35edf.jpg'),
+(12, 'Bastones hh', '798798', '75.00', '15', 'Bastones para 125LB', 3, 2, 1, '5d2dd82e83cd1.jpg');
 
 -- --------------------------------------------------------
 
@@ -398,7 +407,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -416,7 +425,7 @@ ALTER TABLE `garantia`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

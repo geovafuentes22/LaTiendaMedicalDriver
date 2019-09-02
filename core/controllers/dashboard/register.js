@@ -4,7 +4,7 @@ $(document).ready(function()
 })
 
 // Constante para establecer la ruta y parámetros de comunicación con la API
-const apiRegistrar = '../../core/api/commerce/usuarios.php?action=';
+const apiRegistrar = '../../core/api/dashboard/usuarios.php?action=';
 
 // Función para verificar si existen usuarios en el sitio privado
 function checkUsuarios()
@@ -57,7 +57,7 @@ $('#form-register').submit(function()
 {
     event.preventDefault();
     $.ajax({
-        url: api + 'register',
+        url: apiRegistrar + 'register',
         type: 'post',
         data: $('#form-register').serialize(),
         datatype: 'json'
@@ -68,7 +68,7 @@ $('#form-register').submit(function()
             const dataset = JSON.parse(response);
             // Se comprueba si la respuesta es satisfactoria, sino se muestra la excepción
             if (dataset.status) {
-                sweetAlert(1, dataset.message, 'acceder.php');
+                sweetAlert(1, dataset.message, 'index.php');
             } else {
                 sweetAlert(2, dataset.exception, null);
             }

@@ -71,15 +71,19 @@ if (isset($_GET['action'])) {
                         if ($usuario->setClave($_POST['clave_actual_1'])) {
                             if ($usuario->checkPassword()) {
                                 if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                                    if ($usuario->setClave($_POST['clave_nueva_1'])) {
-                                        if ($usuario->changePassword()) {
-                                            $result['status'] = 1;
-                                            $result['message'] = 'Contraseña cambiada correctamente';
+                                    if ($_POST['clave_actual_1'] != $_POST['clave_nueva_1']) {
+                                        if ($usuario->setClave($_POST['clave_nueva_1'])) {
+                                            if ($usuario->changePassword()) {
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Contraseña cambiada correctamente';
+                                            } else {
+                                                $result['exception'] = 'Operación fallida';
+                                            }
                                         } else {
-                                            $result['exception'] = 'Operación fallida';
+                                            $result['exception'] = 'Clave nueva menor a 6 caracteres';
                                         }
                                     } else {
-                                        $result['exception'] = 'Clave nueva menor a 6 caracteres';
+                                        $result['exception'] = 'La clave nueva no puede ser igual a la antigua';
                                     }
                                 } else {
                                     $result['exception'] = 'Claves nuevas diferentes';
@@ -88,7 +92,7 @@ if (isset($_GET['action'])) {
                                 $result['exception'] = 'Clave actual incorrecta';
                             }
                         } else {
-                            $result['exception'] = 'Clave actual menor a 6 caracteres';
+                            $result['exception'] = 'Clave actual menor a 8 caracteres';
                         }
                     } else {
                         $result['exception'] = 'Claves actuales diferentes';
@@ -137,7 +141,7 @@ if (isset($_GET['action'])) {
                                             $result['exception'] = 'Operación fallida';
                                         }
                                     } else {
-                                        $result['exception'] = 'Clave menor a 6 caracteres';
+                                        $result['exception'] = 'Clave menor a 8 caracteres';
                                     }
                                 } else {
                                     $result['exception'] = 'Claves diferentes';
@@ -219,6 +223,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
                 }
                 break;
+                case 'getTotalDays':
+                    if($usuario->setId($_SESSION['id_usuario'])){
+                        if($result['dataset'] = $usuario->getTotalDays() ){
+                            $result['status']=1;
+                        }
+                        else{
+                            $result['exception']='Tu contraseña ya caduco';
+                        }
+                    }
+                    else{
+                        $result['exception']='No se ha logrado identificar al usuario';
+                    }
+                break;
             default:
                 exit('Acción no disponible log');
         }
@@ -241,14 +258,18 @@ if (isset($_GET['action'])) {
                             if ($usuario->setAlias($_POST['alias'])) {
                                 if ($_POST['clave1'] == $_POST['clave2']) {
                                     if ($usuario->setClave($_POST['clave1'])) {
-                                        if ($usuario->createUsuario()) {
-                                            $result['status'] = 1;
-                                            $result['message'] = 'Usuario registrado correctamente';
+                                        if ($_POST['alias'] != $_POST['clave1']) {
+                                            if ($usuario->createUsuario()) {
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Usuario registrado correctamente';
+                                            } else {
+                                                $result['exception'] = 'Operación fallida';
+                                            }
                                         } else {
-                                            $result['exception'] = 'Operación fallida';
+                                            $result['exception'] = 'El Usuario no puede ser igual a la contraseña';
                                         }
                                     } else {
-                                        $result['exception'] = 'Clave menor a 6 caracteres';
+                                        $result['exception'] = 'Clave menor a 8 caracteres';
                                     }
                                 } else {
                                     $result['exception'] = 'Claves diferentes';
@@ -281,7 +302,7 @@ if (isset($_GET['action'])) {
                                 $result['exception'] = 'Clave inexistente';
                             }
                         } else {
-                            $result['exception'] = 'Clave menor a 6 caracteres';
+                            $result['exception'] = 'Clave menor a 8 caracteres';
                         }
                     } else {
                         $result['exception'] = 'Alias inexistente';

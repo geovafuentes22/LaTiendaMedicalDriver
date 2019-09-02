@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/El_Salvador');
 class Usuarios extends Validator
 {
 	// Declaración de propiedades
@@ -8,7 +9,7 @@ class Usuarios extends Validator
 	private $correo = null;
 	private $alias = null;
 	private $clave = null;
-
+	private $created_profile_at = null;
 	// Métodos para sobrecarga de propiedades
 	public function setId($value)
 	{
@@ -87,7 +88,7 @@ class Usuarios extends Validator
 
 	public function setClave($value)
 	{
-		if ($this->validatePassword($value)) {
+		if ($this->validateNewPassword($value)) {
 			$this->clave = $value;
 			return true;
 		} else {
@@ -152,8 +153,9 @@ class Usuarios extends Validator
 	public function createUsuario()
 	{
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = 'INSERT INTO usuarios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario) VALUES(?, ?, ?, ?, ?)';
-		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $hash);
+		$today = date('Y-m-d');
+		$sql = 'INSERT INTO usuarios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario, created_profile_at) VALUES(?, ?, ?, ?, ?, ?)';
+		$params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $hash, $today);
 		return Database::executeRow($sql, $params);
 	}
 
@@ -162,6 +164,26 @@ class Usuarios extends Validator
 		$sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario FROM usuarios WHERE id_usuario = ?';
 		$params = array($this->id);
 		return Database::getRow($sql, $params);
+	}
+	public function getTotalDays(){
+		$sql='SELECT created_profile_at FROM usuarios WHERE id_usuario = ?';
+		$params = array($this->id);
+		$data = Database::getRow($sql, $params);
+		$today = date('Y-m-d');
+
+		//Conseguir la fecha de cambio
+		$dateChange = strtotime ( '+7 day' , strtotime ( $data['created_profile_at'] ) ) ;
+		$dateChange = date ( 'Y-m-d' , $dateChange );
+
+		//fecha de creación
+		$dateCreated= new DateTime($today);
+		$dateChangeP = new DateTime($dateChange);
+
+		$diff = $dateCreated->diff($dateChangeP);
+
+		$days = $diff->days;
+		return $days;
+
 	}
 
 	public function updateUsuario()

@@ -5,15 +5,41 @@ $(document).ready(function () {
     graficoEstado();
     grafico3();
     graficoMayorcito();
+    totalDays();
 })
 
 const apiProductos = '../../core/api/dashboard/productos.php?action=';
 const apiGarantia = '../../core/api/dashboard/garantias.php?action='
+const apiUsuarios = '../../core/api/dashboard/usuarios.php?action='
+
+function totalDays(){
+    $.ajax({
+        url:apiUsuarios+'getTotalDays',
+        data:null,
+        type:'POST',
+        datatype:'JSON'
+    })    
+    .done(function(response){
+        if(isJSONString(response)){
+            const result = JSON.parse(response);
+            if(result.status){
+                $('#totaldays').text('Tu contraseña caduca en: '+result.dataset+' días.');
+            }
+            else{
+
+            }
+        }
+        else{
+            console.log(response);
+        }
+    })
+}
 
 // Función para mostrar un saludo dependiendo de la hora del cliente
 function showGreeting() {
     let today = new Date();
     let hour = today.getHours();
+
     if (hour < 12) {
         greeting = '¿Qué tranza mi lanza? Buenos días';
     } else if (hour < 19) {
