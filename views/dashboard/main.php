@@ -4,7 +4,8 @@ Dashboard::headerTemplate('Bienvenido');
 ?>
 <div class="container">
     <div class="row">
-        <h4 class="center-align blue-text" id="greeting">hola</h4>
+        <h4 class="center-align blue-text" id="greeting"></h4>
+        <h4 class="center-align blue-text" id="totaldays"></h4>
     </div>
    <br>
     <h4>Cantidad de productos por categoria</h4>

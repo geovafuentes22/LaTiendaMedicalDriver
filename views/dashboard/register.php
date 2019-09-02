@@ -2,7 +2,7 @@
 require_once('../../core/helpers/dashboard.php');
 Dashboard::headerTemplate('Registro');
 ?>
-<form method="post" id="form-register">
+<form method="post" id="form-register" autocomplete="off">
     <div class="row">
         <div class="input-field col s12 m6">
           	<i class="material-icons prefix">person</i>

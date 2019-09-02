@@ -173,5 +173,15 @@ class Validator
             return false;
         }
     }
+
+    public function validateNewPassword($value)
+    {
+        if (preg_match('/^(?=(.*\d){1})(.*\S)(?=.*[a-zA-Z\S])[0-9a-zA-Z\S]{8,}$/',$value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }   
+    
 }
 ?>

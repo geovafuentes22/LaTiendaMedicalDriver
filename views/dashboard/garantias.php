@@ -4,7 +4,7 @@ Dashboard::headerTemplate('Garantias');
 ?>
 <div class="row">
     <!-- Formulario de búsqueda -->
-    <form method="post" id="form-search">
+    <form method="post" id="form-search" autocomplete="off">
         <div class="input-field col s6 m4">
             <i class="material-icons prefix">search</i>
             <input id="search" type="text" name="search"/>
@@ -37,7 +37,7 @@ Dashboard::headerTemplate('Garantias');
 <div id="modal-create" class="modal">
     <div class="modal-content">
         <h4 class="center-align">Crear Nueva Garantia</h4>
-        <form method="post" id="form-create" enctype="multipart/form-data">
+        <form method="post" id="form-create" enctype="multipart/form-data" autocomplete="off">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">note_add</i>
@@ -71,7 +71,7 @@ Dashboard::headerTemplate('Garantias');
 <div id="modal-update" class="modal">
     <div class="modal-content">
         <h4 class="center-align">Modificar Garantia</h4>
-        <form method="post" id="form-update" enctype="multipart/form-data">
+        <form method="post" id="form-update" enctype="multipart/form-data " autocomplete="off">
             <input type="hidden" id="id_garantia" name="id_garantia"/>
             <div class="row">
                 <div class="input-field col s12 m6">
