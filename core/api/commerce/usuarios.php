@@ -30,14 +30,14 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'editProfile':
-                if ($Cliente->setId($_SESSION['id_cliente'])) {
-                    if ($Cliente->getCliente()) {
-                        $_POST = $Cliente->validateForm($_POST);
-                        if ($Cliente->setNombre($_POST['profile_nombres'])) {
-                            if ($Cliente->setApellido($_POST['profile_apellidos'])) {
-                                if ($Cliente->setCorreo($_POST['profile_correo'])) {
-                                        if ($Cliente->updateCliente()) {
-                                            $_SESSION['correo'] = $Cliente->getCorreo();
+                if ($cliente->setId($_SESSION['id_cliente'])) {
+                    if ($cliente->getCliente()) {
+                        $_POST = $cliente->validateForm($_POST);
+                        if ($cliente->setNombre($_POST['profile_nombres'])) {
+                            if ($cliente->setApellido($_POST['profile_apellidos'])) {
+                                if ($cliente->setCorreo($_POST['profile_correo'])) {
+                                        if ($cliente->updateCliente()) {
+                                            $_SESSION['correo'] = $cliente->getCorreo();
                                             $result['status'] = 1;
                                             $result['message'] = 'Perfil modificado correctamente';
                                      } else {
@@ -100,7 +100,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'search':
-                $_POST = $Cliente->validateForm($_POST);
+                $_POST = $cliente->validateForm($_POST);
                 if ($_POST['search'] != '') {
                     if ($result['dataset'] = $usuario->searchCliente($_POST['search'])) {
                         $result['status'] = 1;
@@ -118,13 +118,13 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'create':
-                $_POST = $Cliente->validateForm($_POST);
-                if ($Cliente->setNombres($_POST['create_nombres'])) {
-                    if ($Cliente->setApellidos($_POST['create_apellidos'])) {
-                        if ($Cliente->setCorreo($_POST['create_correo'])) {
+                $_POST = $cliente->validateForm($_POST);
+                if ($cliente->setNombres($_POST['create_nombres'])) {
+                    if ($cliente->setApellidos($_POST['create_apellidos'])) {
+                        if ($cliente->setCorreo($_POST['create_correo'])) {
                                 if ($_POST['create_clave1'] == $_POST['create_clave2']) {
-                                    if ($Cliente->setClave($_POST['create_clave1'])) {
-                                        if ($Cliente->createCliente()) {
+                                    if ($cliente->setClave($_POST['create_clave1'])) {
+                                        if ($cliente->createCliente()) {
                                             $result['status'] = 1;
                                             $result['message'] = 'Cliente creado correctamente';
                                         } else {
@@ -147,8 +147,8 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'get':
-                if ($Cliente->setId($_POST['id_cliente'])) {
-                    if ($result['dataset'] = $Cliente->getCliente()) {
+                if ($cliente->setId($_POST['id_cliente'])) {
+                    if ($result['dataset'] = $cliente->getCliente()) {
                         $result['status'] = 1;
                     } else {
                         $result['exception'] = 'Cliente inexistente';
@@ -158,14 +158,14 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'update':
-                $_POST = $Cliente->validateForm($_POST);
-                if ($Cliente->setId($_POST['id_cliente'])) {
-                    if ($Cliente->getCliente()) {
-                        if ($Cliente->setNombres($_POST['update_nombres'])) {
-                            if ($Cliente->setApellidos($_POST['update_apellidos'])) {
-                                if ($Cliente->setCorreo($_POST['update_correo'])) {
-                                    if ($Cliente->setAlias($_POST['update_alias'])) {
-                                        if ($Cliente->updateCliente()) {
+                $_POST = $cliente->validateForm($_POST);
+                if ($cliente->setId($_POST['id_cliente'])) {
+                    if ($cliente->getCliente()) {
+                        if ($cliente->setNombres($_POST['update_nombres'])) {
+                            if ($cliente->setApellidos($_POST['update_apellidos'])) {
+                                if ($cliente->setCorreo($_POST['update_correo'])) {
+                                    if ($cliente->setAlias($_POST['update_alias'])) {
+                                        if ($cliente->updateCliente()) {
                                             $result['status'] = 1;
                                             $result['message'] = 'Cliente modificado correctamente';
                                         } else {
@@ -192,9 +192,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'delete':
                 if ($_POST['identifier'] != $_SESSION['id_cliente']) {
-                    if ($Cliente->setId($_POST['identifier'])) {
-                        if ($Cliente->getCliente()) {
-                            if ($Cliente->deleteCliente()) {
+                    if ($cliente->setId($_POST['identifier'])) {
+                        if ($cliente->getCliente()) {
+                            if ($cliente->deleteCliente()) {
                                 $result['status'] = 1;
                                 $result['message'] = 'Cliente eliminado correctamente';
                             } else {
@@ -232,11 +232,15 @@ if (isset($_GET['action'])) {
                             if ($cliente->setDui($_POST['dui'])) {
                                 if ($_POST['clave1'] == $_POST['clave2']) {
                                     if ($cliente->setClave($_POST['clave1'])) {
-                                        if ($cliente->createCliente()) {
-                                            $result['status'] = 1;
-                                            $result['message'] = 'Cliente registrado correctamente';
+                                        if ($_POST['correo'] != $_POST['clave1']) {
+                                            if ($cliente->createCliente()) {
+                                                $result['status'] = 1;
+                                                $result['message'] = 'Cliente registrado correctamente';
+                                            } else {
+                                                $result['exception'] = 'Operación fallida';
+                                            }
                                         } else {
-                                            $result['exception'] = 'Operación fallida';
+                                            $result['exception'] = 'El correo y la contraseña no pueden ser iguales';
                                         }
                                     } else {
                                         $result['exception'] = 'Clave menor a 6 caracteres';

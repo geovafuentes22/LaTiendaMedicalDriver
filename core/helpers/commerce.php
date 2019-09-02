@@ -137,7 +137,7 @@ private function modals()
 			<div id="modal-profile" class="modal">
 				<div class="modal-content">
 					<h4 class="center-align">Editar perfil</h4>
-					<form method="post" id="form-profile">
+					<form method="post" id="form-profile" autocomplete="off">
 						<div class="row">
 							<div class="input-field col s12 m6">
 								<i class="material-icons prefix">pets</i>
@@ -166,7 +166,7 @@ private function modals()
 			<div id="modal-password" class="modal">
 				<div class="modal-content">
 					<h4 class="center-align">Cambiar contraseña</h4>
-					<form method="post" id="form-password">
+					<form method="post" id="form-password" autocomplete="off">
 						<div class="row center-align">
 							<label>CLAVE ACTUAL</label>
 						</div>

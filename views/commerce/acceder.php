@@ -6,7 +6,7 @@ Commerce::headerTemplate('Acceder');
 <div class="container">
 	<h4 class="center-align">ACCEDER</h4>
 	<div id="form-sesion">
-		<form id="sesion" method="post">
+		<form id="sesion" method="post" autocomplete="off">
 			<div class="row">
 				<div class="input-field col s12 m6 offset-m3">
 					<i class="material-icons prefix">email</i>

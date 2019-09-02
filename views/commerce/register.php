@@ -8,7 +8,7 @@ Commerce::headerTemplate('Registrarse');
 
 	<!-- Formulario para crear cuenta -->
 	<div id="cuenta">
-		<form id="form-register" method="post">
+		<form id="form-register" method="post" autocomplete="off">
 			<div class="row">
 				<div class="input-field col s12 m6">
 					<i class="material-icons prefix">account_box</i>
