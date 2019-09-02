@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readProfile':
-                if ($Cliente->setId($_SESSION['id_cliente'])) {
+                if ($cliente->setId($_SESSION['id_cliente'])) {
                     if ($result['dataset'] = $cliente->getCliente()) {
                         $result['status'] = 1;
                     } else {
@@ -60,14 +60,14 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'password':
-                if ($Cliente->setId($_SESSION['id_cliente'])) {
-                    $_POST = $Cliente->validateForm($_POST);
+                if ($cliente->setId($_SESSION['id_cliente'])) {
+                    $_POST = $cliente->validateForm($_POST);
                     if ($_POST['clave_actual_1'] == $_POST['clave_actual_2']) {
-                        if ($Cliente->setClave($_POST['clave_actual_1'])) {
-                            if ($Cliente->checkPassword()) {
+                        if ($cliente->setClave($_POST['clave_actual_1'])) {
+                            if ($cliente->checkPassword()) {
                                 if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-                                    if ($Cliente->setClave($_POST['clave_nueva_1'])) {
-                                        if ($Cliente->changePassword()) {
+                                    if ($cliente->setClave($_POST['clave_nueva_1'])) {
+                                        if ($cliente->changePassword()) {
                                             $result['status'] = 1;
                                             $result['message'] = 'Contraseña cambiada correctamente';
                                         } else {
@@ -216,6 +216,12 @@ if (isset($_GET['action'])) {
     } else {
         switch ($_GET['action']) {
             case 'read':
+                if ($cliente->readClientes()) {
+                    
+                } else {
+                    $result['status'] = 2;
+                    $result['exception'] = 'No existen cuentas registradas';
+                }
 
                break;
             case 'register':
@@ -253,7 +259,6 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = $cliente->validateForm($_POST);
-                
                 if ($cliente->setCorreo($_POST['correo'])) {
                     if ($cliente->checkCorreo()) {
                         if ($cliente->setClave($_POST['clave'])) {

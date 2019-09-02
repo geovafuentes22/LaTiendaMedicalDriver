@@ -49,6 +49,9 @@ Commerce::headerTemplate('Registrarse');
 					<input type="checkbox" id="condicion" name="condicion">
 					<span>Acepto <a href="#terminos" class="modal-trigger">términos y condiciones</a></span>
 				</label>
+				<div class="center-align col s12">
+				<div class="g-recaptcha" data-sitekey="6LepKbUUAAAAAF27xkXtlib2d9h18mLzGI-U4_v7"></div>
+				</div>
 			</div>
 			<div class="row center-align">
 				<div class="col s12">

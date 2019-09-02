@@ -1,6 +1,6 @@
 <?php
 require_once('../../core/helpers/dashboard.php');
-Dashboard::headerTemplate('Registro');
+Dashboard::headerTemplate('Registrarse');
 ?>
 <form method="post" id="form-register" autocomplete="off">
     <div class="row">

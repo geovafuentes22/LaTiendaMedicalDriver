@@ -99,8 +99,8 @@ class Clientes extends Validator
 
 	public function setCorreo($value)
 	{
-		if($this->validateEmail($value, 1, 50)) {
-			$this->correo = $value;
+		if($this->validateEmail($value)) {
+			$this->Correo = $value;
 			return true;
 		} else {
 			return false;
@@ -109,7 +109,7 @@ class Clientes extends Validator
 
 	public function getCorreo()
 	{
-		return $this->correo;
+		return $this->Correo;
 	}
 	// Metodos para el manejo del SCRUD
 	public function readClientes()
@@ -130,21 +130,21 @@ class Clientes extends Validator
 	{
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
 		$sql = 'INSERT INTO cliente(nombre,apellido,Dui,correo, clave) VALUES(?, ?, ?, ?, ?)';
-		$params = array($this->nombre, $this->apellido,$this->Dui,$this->correo, $hash);
+		$params = array($this->nombre, $this->apellido,$this->Dui,$this->Correo, $hash);
 		return Database::executeRow($sql, $params);
 	}
 
 	public function getCliente()
 	{
-		$sql = 'SELECT id_cliente, nombre,apellido,Dui,correo FROM cliente WHERE id_cliente = ?';
+		$sql = 'SELECT id_cliente, nombre,apellido,correo FROM cliente WHERE id_cliente = ?';
 		$params = array($this->id);
 		return Database::getRow($sql, $params);
 	}
 
 	public function updateCliente()
 	{
-		$sql = 'UPDATE cliente SET nombre = ?, apellido = ?, Dui = ?, correo = ? WHERE id_cliente = ?';
-		$params = array($this->nombre, $this->apellido, $this->Dui, $this->correo,  $this->id);
+		$sql = 'UPDATE cliente SET nombre = ?, apellido = ?, correo = ? WHERE id_cliente = ?';
+		$params = array($this->nombre, $this->apellido,  $this->Correo,  $this->id);
 		return Database::executeRow($sql, $params);
 	}
 
