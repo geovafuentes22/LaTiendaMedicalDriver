@@ -34,10 +34,10 @@ function modalProfile()
             const result = JSON.parse(response);
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
-                $('#profile_nombres').val(result.dataset.nombres_usuario);
-                $('#profile_apellidos').val(result.dataset.apellidos_usuario);
-                $('#profile_correo').val(result.dataset.correo_usuario);
-                $('#profile_alias').val(result.dataset.alias_usuario);
+                $('#profile_nombres').val(result.dataset.nombre);
+                $('#profile_apellidos').val(result.dataset.apellido);
+                $('#profile_correo').val(result.dataset.correo);
+                //$('#profile_alias').val(result.dataset.alias_usuario);
                 M.updateTextFields();
                 $('#modal-profile').modal('open');
             } else {
@@ -70,7 +70,7 @@ $('#form-profile').submit(function()
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
                 $('#modal-profile').modal('close');
-                sweetAlert(1, result.message, 'main.php');
+                sweetAlert(1, result.message, 'index.php');
             } else {
                 sweetAlert(2, result.exception, null);
             }
@@ -101,7 +101,7 @@ $('#form-password').submit(function()
             // Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
             if (result.status) {
                 $('#modal-password').modal('close');
-                sweetAlert(1, result.message, 'main.php');
+                sweetAlert(1, result.message, 'index.php');
             } else {
                 sweetAlert(2, result.exception, null);
             }

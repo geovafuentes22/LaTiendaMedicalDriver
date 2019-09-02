@@ -20,7 +20,7 @@ function checkUsuarios()
         if (isJSONString(response)) {
             const dataset = JSON.parse(response);
             // Se comprueba que no hay usuarios registrados para redireccionar al registro del primer usuario
-            if (!dataset.status) {
+            if (dataset.status) {
                 sweetAlert(3, dataset.message, 'register.php');
             }
         } else {
